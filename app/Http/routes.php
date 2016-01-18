@@ -23,10 +23,6 @@ Route::get('/new-estimate', function () {
     return view('estimates.new-estimate');
 });
 
-Route::get('/items', function () {
-    return view('items.items');
-});
-
-Route::get('/new-item', function () {
-    return view('items.new-item');
-});
+Route::get('/items', 'ItemsController@index'); 
+Route::get('/new-item', 'ItemsController@create');
+Route::post('/new-item', 'ItemsController@store');

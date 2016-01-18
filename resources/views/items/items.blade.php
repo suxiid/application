@@ -24,31 +24,33 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                                 <tr>
-                                    <th>Customer</th>
-                                    <th>Vehicle</th>
-                                    <th>Date</th>
-                                    <th>Net Amount</th>
-                                    <th>Department</th>
-                                    <th>Created By</th>
+                                    <th>Item Name</th>
+                                    <th>Type</th>
+                                    <th>Category</th>
+                                    <th>Location</th>
+                                    <th>Unit of Sale</th>
+                                    <th>Quantity</th>
+                                    <th>Sale Price</th>
+                                    <th>Service Only Cost</th>
+                                    <th>pre-order Level</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($items as $item)
                                 <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">4</td>
-                                    <td class="center">X</td>
-                                </tr>
-                                <tr class="even gradeC">
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 5.0</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">5</td>
-                                    <td class="center">C</td>
-                                </tr>                                
+                                    <td>{{$item->name}}</td>
+                                    <td>{{$item->type}}</td>
+                                    <td>{{$item->category_id}}</td>
+                                    <td>{{$item->location}}</td>
+                                    <td class="center">{{$item->unit_of_sale}}</td>
+                                    <td class="center">{{$item->quantity}}</td>
+                                    <td class="center">{{$item->sale_price}}</td>
+                                    <td class="center">{{$item->service_only_cost}}</td>
+                                    <td class="center">{{$item->pre_order_level}}</td>
+                                    <td></td>
+                                </tr> 
+                                @endforeach
                             </tbody>
                         </table>
                     </div>                   

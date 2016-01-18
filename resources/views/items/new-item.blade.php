@@ -12,7 +12,7 @@
     <!-- /.row -->
     
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Item Data Form
@@ -20,71 +20,103 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-2 control-label">Item Name</label>
-                          <div class="col-sm-10">
-                              <input required type="email" class="form-control" id="inputEmail3" placeholder="Item Name">
-                          </div>
+                    @if($errors->any())
+                    <div class="form-group">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-10 alert alert-danger">                            
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>                            
                         </div>
-                        <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-2 control-label">Type</label>
-                          <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Type">
-                          </div>
+                    </div>
+                    @endif
+                    
+                    {!! Form::open(array('url' => url('/new-item'), 'class'=>'form-horizontal')) !!}
+                    
+                    <div class="form-group">
+                        {!! Form::label('item-name', 'Item Name', ['class' => 'col-sm-2 control-label']) !!}
+                        <div class="col-sm-10">
+                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Item Name']) !!} 
                         </div>
-                        <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-2 control-label">Category</label>
-                          <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Category">
-                          </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        {!! Form::label('item-type', 'Type', ['class' => 'col-sm-2 control-label']) !!}
+                        <div class="col-sm-10">
+                        {!! Form::select('item-type', ['' => 'Select an option', 'stock' => 'Stock Item', 'nonstock' => 'Non-Stock Item', 'service' => 'Service Item'], null, ['class' => 'form-control']); !!} 
                         </div>
-                        <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-2 control-label">Location</label>
-                          <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Location">
-                          </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        {!! Form::label('item-cat', 'Category', ['class' => 'col-sm-2 control-label']) !!}
+                        <div class="col-sm-10">
+                        <select class="form-control" name="item-category">
+                            <option value="">Select an option</option>
+                            @foreach($catagories as $catagory)
+                            <option value="{{$catagory->id}}">{{$catagory->cat_name}}</option>
+                            @endforeach
+                        </select>
                         </div>
-                        <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-2 control-label">Unit of Sale</label>
-                          <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Ex: kg">
-                          </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        {!! Form::label('location', 'Location', ['class' => 'col-sm-2 control-label']) !!}
+                        <div class="col-sm-10">
+                        {!! Form::text('item-location', null, ['class' => 'form-control', 'placeholder' => 'Location']) !!} 
                         </div>
-                        <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-2 control-label">Quantity</label>
-                          <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Quantity">
-                          </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        {!! Form::label('item-unit', 'Unit of Sale', ['class' => 'col-sm-2 control-label']) !!}
+                        <div class="col-sm-10">
+                        {!! Form::select('item-unit', ['' => 'Select an option', 'kg' => 'kg', 'units' => 'Units'], null, ['class' => 'form-control']); !!} 
                         </div>
-                        <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-2 control-label">Sale Price</label>
-                          <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Sale Price">
-                          </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        {!! Form::label('quantity', 'Quantity', ['class' => 'col-sm-2 control-label']) !!}
+                        <div class="col-sm-10">
+                        {!! Form::text('item-quantity', null, ['class' => 'form-control', 'placeholder' => 'Quantity']) !!} 
                         </div>
-                        <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-2 control-label">Pre-order Level</label>
-                          <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="pre-order Level">
-                          </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        {!! Form::label('sale-price', 'Sale Price', ['class' => 'col-sm-2 control-label']) !!}
+                        <div class="col-sm-10">
+                        {!! Form::text('sale-price', null, ['class' => 'form-control', 'placeholder' => 'Sale Price']) !!} 
                         </div>
-                        <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-2 control-label">Service Only Cost</label>
-                          <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Service Only Cost">
-                          </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        {!! Form::label('po-level', 'pre-order Level', ['class' => 'col-sm-2 control-label']) !!}
+                        <div class="col-sm-10">
+                        {!! Form::text('po-level', null, ['class' => 'form-control', 'placeholder' => 'pre-order Level']) !!} 
                         </div>
-                        <div class="form-group">
-                          <div class="col-sm-offset-2 col-sm-2">
-                            <input type="submit" class="btn btn-primary" value="Save Item">
-                            <button type="reset" class="btn btn-default">Reset</button>
-                          </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        {!! Form::label('so-cost', 'Service Only Cost', ['class' => 'col-sm-2 control-label']) !!}
+                        <div class="col-sm-10">
+                        {!! Form::text('so-cost', null, ['class' => 'form-control', 'placeholder' => 'Service Only Cost']) !!} 
                         </div>
-                    </form>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-3">
+                        {!! Form::submit('Save Item', ['class' => 'btn btn-primary']) !!} 
+                        {!! Form::reset('Reset Form', ['class' => 'btn btn-default']) !!} 
+                        </div>
+                    </div>
+                    
+                    {!! Form::close() !!}
                     
                 </div>
             </div>
+        </div>
+        <div class="col-lg-4">
+            
         </div>
     </div>
 

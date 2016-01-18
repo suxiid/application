@@ -5,5 +5,10 @@
         <data xmlns="http://www.netbeans.org/ns/php-project/1">
             <name>application</name>
         </data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>endif</word>
+            <word>submitfield</word>
+            <word>textfield</word>
+        </spellchecker-wordlist>
     </configuration>
 </project>
