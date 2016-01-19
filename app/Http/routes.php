@@ -23,6 +23,13 @@ Route::get('/new-estimate', function () {
     return view('estimates.new-estimate');
 });
 
+/*
 Route::get('/items', 'ItemsController@index'); 
 Route::get('/new-item', 'ItemsController@create');
 Route::post('/new-item', 'ItemsController@store');
+ * 
+ */
+
+Route::resource('items', 'ItemsController');
+
+//Route::resource('items', 'ItemsController');

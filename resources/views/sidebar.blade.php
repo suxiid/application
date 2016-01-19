@@ -45,19 +45,19 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-						<li>
+			<li>
                             <a href="#"><i class="fa fa-cogs fa-fw"></i> Items<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{url('/new-item')}}">New Item</a>
+                                    <a href="{{url('items/create')}}">New Item</a>
                                 </li>
                                 <li>
-                                    <a href="{{url('/items')}}">All Items</a>
+                                    <a href="{{url('items')}}">All Items</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-						<li>
+			<li>
                             <a href="#"><i class="fa fa-file-text-o fa-fw"></i> Purchase Orders<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>

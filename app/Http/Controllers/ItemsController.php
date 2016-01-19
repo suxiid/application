@@ -12,12 +12,13 @@ class ItemsController extends Controller
 {
     public function index(){
         $items = Item::all();
-        return view('items.items')->with('items', $items);
+        $catagories = \App\ItemCategory::all(['id', 'cat_name']);
+        return view('items.items', compact('items', 'catagories'));
     }
 
     public function  create(){
         $catagories = \App\ItemCategory::all(['id', 'cat_name']);        
-        return view('items.new-item')->with('catagories', $catagories);
+        return view('items.create')->with('catagories', $catagories);
     }
     
     public function  store(Requests\CreateItemRequest $request){
@@ -26,17 +27,28 @@ class ItemsController extends Controller
         $user_id = '1';      
         $item = new Item();
         $item->name = $input['name'];
-        $item->type = $input['item-type'];
-        $item->location = $input['item-location'];
-        $item->quantity = $input['item-quantity'];
-        $item->sale_price = $input['sale-price'];
-        $item->unit_of_sale = $input['item-unit'];
-        $item->pre_order_level = $input['po-level'];
+        $item->type = $input['type'];
+        $item->location = $input['location'];
+        $item->quantity = $input['quantity'];
+        $item->sale_price = $input['sale_price'];
+        $item->unit_of_sale = $input['unit_of_sale'];
+        $item->pre_order_level = $input['pre_order_level'];
         $item->updated_user = $user_id;
-        $item->category_id = $input['item-category'];
-        $item->service_only_cost = $input['so-cost'];
+        $item->category_id = $input['category_id'];
+        $item->service_only_cost = $input['service_only_cost'];
         $item->save($request->all());
         
         return redirect('/items');
     }
+    
+    public function edit($id){
+        $item = Item::findOrFail($id);
+        $catagories = \App\ItemCategory::all(['id', 'cat_name']); 
+        return view('items.edit', compact('item', 'catagories'));
+    }
+    
+    public function update(){
+        
+    }
+    
 }

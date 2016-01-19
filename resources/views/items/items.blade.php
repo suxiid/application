@@ -6,7 +6,7 @@
             <h3 class="page-header">Items</h3>
         </div>
         <div class="col-lg-10">
-        <a href="{{url('/new-item')}}" type="button" class="page-header btn btn-primary">New Item</a>
+        <a href="{{url('items/create')}}" type="button" class="page-header btn btn-primary">New Item</a>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -41,14 +41,21 @@
                                 <tr class="odd gradeX">
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->type}}</td>
-                                    <td>{{$item->category_id}}</td>
+                                    <td>@if($item->category_id)
+                                        @foreach($catagories as $catagory)
+                                        @if($item->category_id == $catagory->id)
+                                        {{$catagory->cat_name}}
+                                        @endif
+                                        @endforeach
+                                        @endif
+                                    </td>
                                     <td>{{$item->location}}</td>
                                     <td class="center">{{$item->unit_of_sale}}</td>
                                     <td class="center">{{$item->quantity}}</td>
                                     <td class="center">{{$item->sale_price}}</td>
                                     <td class="center">{{$item->service_only_cost}}</td>
                                     <td class="center">{{$item->pre_order_level}}</td>
-                                    <td></td>
+                                    <td><a href="{{url('items/'.$item->id.'/edit')}}"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;<a href="#"><i class="fa fa-trash-o fa-fw"></i></a></td>
                                 </tr> 
                                 @endforeach
                             </tbody>
