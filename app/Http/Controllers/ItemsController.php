@@ -2,14 +2,23 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Request;
+//use Request;
 use App\Item;
+use App\Http\Requests\ItemRequest;
 
 class ItemsController extends Controller
 {
+     /**
+     * Instantiate a new UserController instance.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $items = Item::all();
         $catagories = \App\ItemCategory::all(['id', 'cat_name']);
@@ -21,9 +30,9 @@ class ItemsController extends Controller
         return view('items.create')->with('catagories', $catagories);
     }
     
-    public function  store(Requests\CreateItemRequest $request){
+    public function  store(ItemRequest $request){
         
-        $input = Request::all();
+        $input = $request->all();
         $user_id = '1';      
         $item = new Item();
         $item->name = $input['name'];
@@ -47,8 +56,10 @@ class ItemsController extends Controller
         return view('items.edit', compact('item', 'catagories'));
     }
     
-    public function update(){
-        
+    public function update($id, ItemRequest $request){
+	$item = Item::findOrFail($id);
+	$item->update($request->all());
+	return redirect('items');        
     }
     
 }

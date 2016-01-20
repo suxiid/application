@@ -11,25 +11,27 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', ['middleware' => 'auth', function () {
     return view('dashboard');
-});
+}]);
 
-Route::get('/estimates', function () {
+Route::get('/home', ['middleware' => 'auth', function () {
+    return view('dashboard');
+}]);
+/*
+Route::get('/estimates', ['middleware' => 'auth'], function () {
     return view('estimates.estimates');
 });
 
-Route::get('/new-estimate', function () {
+Route::get('/new-estimate', ['middleware' => 'auth'], function () {
     return view('estimates.new-estimate');
 });
-
-/*
-Route::get('/items', 'ItemsController@index'); 
-Route::get('/new-item', 'ItemsController@create');
-Route::post('/new-item', 'ItemsController@store');
- * 
- */
+*/
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
 
 Route::resource('items', 'ItemsController');
 
-//Route::resource('items', 'ItemsController');
+Route::resource('estimates', 'EstimatesController');

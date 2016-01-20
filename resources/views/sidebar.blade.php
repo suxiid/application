@@ -5,18 +5,9 @@
                     <ul class="nav" id="side-menu">                        
                         <li>
                             <a href="{{url('/')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
+                        </li>                        
                         <li>
-                            <a href="#"><i class="fa fa-list-alt fa-fw"></i> Estimates<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{url('/new-estimate')}}">New Estimate</a>
-                                </li>
-                                <li>
-                                    <a href="{{url('/estimates')}}">All Estimates</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="{{url('/estimates')}}"><i class="fa fa-list-alt fa-fw"></i> Estimates</a>
                         </li>
                         <li>
                             <a href="tables.html"><i class="fa fa-briefcase fa-fw"></i> Jobs</a>
@@ -45,17 +36,8 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-			<li>
-                            <a href="#"><i class="fa fa-cogs fa-fw"></i> Items<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{url('items/create')}}">New Item</a>
-                                </li>
-                                <li>
-                                    <a href="{{url('items')}}">All Items</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                        <li>
+                            <a href="{{url('items')}}"><i class="fa fa-cogs fa-fw"></i> Items</a>
                         </li>
 			<li>
                             <a href="#"><i class="fa fa-file-text-o fa-fw"></i> Purchase Orders<span class="fa arrow"></span></a>

@@ -18,7 +18,21 @@
                         Item Data Form
                     </div>
                     <!-- /.panel-heading -->
-                    <div class="panel-body">                             
+                    <div class="panel-body">    
+                        
+                        @if($errors->any())
+                        <div class="form-group">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10 alert alert-danger">                            
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>                            
+                            </div>
+                        </div>
+                        @endif
+                    
                         {!! Form::model($item, ['action' => ['ItemsController@update', $item->id], 'role' => 'form', 'method' => 'PATCH', 'class'=>'form-horizontal']) !!}
                              
                         <div class="form-group">

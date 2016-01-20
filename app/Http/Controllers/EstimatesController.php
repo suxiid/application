@@ -8,6 +8,14 @@ use App\Http\Controllers\Controller;
 
 class EstimatesController extends Controller
 {
+     /**
+     * Instantiate a new UserController instance.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +23,9 @@ class EstimatesController extends Controller
      */
     public function index()
     {
-        //
+       $estimates = Estimate::all();
+       //$catagories = \App\ItemCategory::all(['id', 'cat_name']);
+       return view('estimates.estimates', compact('estimates'));
     }
 
     /**
@@ -25,7 +35,7 @@ class EstimatesController extends Controller
      */
     public function create()
     {
-        //
+        return view('estimates.create');
     }
 
     /**

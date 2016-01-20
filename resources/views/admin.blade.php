@@ -51,7 +51,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">KENTARO Admin v1.0</a>
+                <a class="navbar-brand" href="{{url('/')}}">KENTARO Admin v1.0</a>
             </div>
     
             <!-- /.navbar-header -->
