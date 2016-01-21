@@ -21,7 +21,7 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="dataTable_wrapper">
-                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-function">
                             <thead>
                                 <tr>
                                     <th>Item Name</th>
@@ -33,7 +33,7 @@
                                     <th>Sale Price</th>
                                     <th>Service Only Cost</th>
                                     <th>pre-order Level</th>
-                                    <th>Actions</th>
+                                    <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,7 +55,7 @@
                                     <td class="center">{{$item->sale_price}}</td>
                                     <td class="center">{{$item->service_only_cost}}</td>
                                     <td class="center">{{$item->pre_order_level}}</td>
-                                    <td><a href="{{url('items/'.$item->id.'/edit')}}"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;<a href="#"><i class="fa fa-trash-o fa-fw"></i></a></td>
+                                    <td class="text-center"><a href="{{url('items/'.$item->id.'/edit')}}"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;<a href="#"><i class="fa fa-trash-o fa-fw"></i></a></td>
                                 </tr> 
                                 @endforeach
                             </tbody>

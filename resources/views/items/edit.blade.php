@@ -52,11 +52,7 @@
                         <div class="form-group">
                             {!! Form::label('item-cat', 'Category', ['class' => 'col-sm-2 control-label']) !!}
                             <div class="col-sm-10">
-                            <select class="form-control" name="category_id">
-                                @foreach($catagories as $catagory)
-                                <option value="{{$catagory->id}}">{{$catagory->cat_name}}</option>
-                                @endforeach
-                            </select>
+                            {!! Form::select('category_id', $catagories ,null , array('class' => 'form-control')) !!}
                             </div>
                         </div>
 
@@ -105,7 +101,6 @@
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-3">
                             {!! Form::submit('Save Item', ['class' => 'btn btn-primary']) !!} 
-                            {!! Form::reset('Reset Form', ['class' => 'btn btn-default']) !!} 
                             </div>
                         </div>
 

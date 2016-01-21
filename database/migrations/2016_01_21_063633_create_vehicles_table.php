@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEstimatesTable extends Migration
+class CreateVehiclesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,20 +12,18 @@ class CreateEstimatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('estimates', function (Blueprint $table) {
+        Schema::create('vehicles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('customer_id')->unsigned();
-            $table->integer('vehicle_id')->unsigned();
-            $table->integer('mileage_in');
-            $table->integer('net_amount');
-            $table->integer('parent_estimate_id')->unsigned();
-            $table->string('department');
+            $table->string('reg_no');
+            $table->string('make');
+            $table->string('model');
+            $table->string('chasis_no');
+            $table->string('next_service');
             $table->integer('created_by')->unsigned();
             $table->timestamps();
             
             $table->foreign('customer_id')->references('id')->on('customers');
-            $table->foreign('vehicle_id')->references('id')->on('vehicles');
-            $table->foreign('parent_estimate_id')->references('id')->on('estimates');
             $table->foreign('created_by')->references('id')->on('users');
         });
     }
@@ -37,6 +35,6 @@ class CreateEstimatesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('estimates');
+        Schema::drop('vehicles');
     }
 }

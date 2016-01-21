@@ -18,6 +18,13 @@ Route::get('/', ['middleware' => 'auth', function () {
 Route::get('/home', ['middleware' => 'auth', function () {
     return view('dashboard');
 }]);
+
+Route::get('/ajax-vehicle', function(){
+    $customer_id = Input::get('cust_id');
+    $vehicles = App\Vehicle::where('customer_id', '=', $customer_id)->get();
+    return Response::json($vehicles);
+});
+
 /*
 Route::get('/estimates', ['middleware' => 'auth'], function () {
     return view('estimates.estimates');

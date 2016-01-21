@@ -6,7 +6,7 @@
             <h3 class="page-header">Items</h3>
         </div>
         <div class="col-lg-10">
-        <a href="{{url('estimates/create')}}" type="button" class="page-header btn btn-primary">New Item</a>
+        <a href="{{url('estimates/create')}}" type="button" class="page-header btn btn-primary">New Estimate</a>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -16,7 +16,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    All Item Data
+                    All Estimate Data
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -24,25 +24,24 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                                 <tr>
-                                    <th>Item Name</th>
-                                    <th>Type</th>
-                                    <th>Category</th>
-                                    <th>Location</th>
-                                    <th>Unit of Sale</th>
-                                    <th>Quantity</th>
-                                    <th>Sale Price</th>
-                                    <th>Service Only Cost</th>
-                                    <th>pre-order Level</th>
+                                    <th>Estimate ID</th>
+                                    <th>Customer</th>
+                                    <th>Reg. No</th>
+                                    <th>Make</th>
+                                    <th>Department</th>
+                                    <th>Net Amount</th>    
+                                    <th>Date</th>
+                                    <th>Job Status</th>
+                                    <th>Created By</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($estimates as $estimate)
                                 <tr class="odd gradeX">
-                                    <td>{{$estimate->name}}</td>
-                                    <td>{{$estimate->type}}</td>
-                                    <td>
-                                    </td>
+                                    <td>{{$estimate->id}}</td>
+                                    <td>{{$estimate->customer}}</td>
+                                    <td>{{$estimate->reg_no}}</td>
                                     <td>{{$estimate->location}}</td>
                                     <td class="center">{{$estimate->unit_of_sale}}</td>
                                     <td class="center">{{$estimate->quantity}}</td>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 //use Request;
 use App\Item;
 use App\Http\Requests\ItemRequest;
+use App\ItemCategory;
 
 class ItemsController extends Controller
 {
@@ -21,12 +22,12 @@ class ItemsController extends Controller
     
     public function index(){
         $items = Item::all();
-        $catagories = \App\ItemCategory::all(['id', 'cat_name']);
+        $catagories = ItemCategory::all(['id', 'cat_name']);
         return view('items.items', compact('items', 'catagories'));
     }
 
     public function  create(){
-        $catagories = \App\ItemCategory::all(['id', 'cat_name']);        
+        $catagories = ItemCategory::lists('cat_name', 'id');        
         return view('items.create')->with('catagories', $catagories);
     }
     
@@ -52,7 +53,7 @@ class ItemsController extends Controller
     
     public function edit($id){
         $item = Item::findOrFail($id);
-        $catagories = \App\ItemCategory::all(['id', 'cat_name']); 
+        $catagories = ItemCategory::lists('cat_name', 'id'); 
         return view('items.edit', compact('item', 'catagories'));
     }
     

@@ -25,6 +25,9 @@
 
     <!-- Custom CSS -->
     <link href="{{url('dist/css/sb-admin-2.css')}}" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="{{url('css/styles.css')}}" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="{{url('bower_components/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
@@ -88,16 +91,12 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{{url('dist/js/sb-admin-2.js')}}"></script>
+    
+    <!-- Custom Theme JavaScript -->
+    <script src="{{url('js/functions.js')}}"></script>
 
     <!-- Page-Level Demo Scripts - Notifications - Use for reference -->
     
-    <script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-                responsive: true
-        });
-    });
-    </script>
 
 </body>
 

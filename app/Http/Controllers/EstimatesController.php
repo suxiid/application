@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Estimate;
+use App\Customer;
+use App\Department;
+use App\Item;
 
 class EstimatesController extends Controller
 {
@@ -36,7 +39,10 @@ class EstimatesController extends Controller
      */
     public function create()
     {
-        return view('estimates.create');
+        $customer_list = Customer::lists('name', 'id');
+        $departments = Department::lists('name', 'id');
+        $items = Item::lists('name', 'id');
+        return view('estimates.create', compact('customer_list', 'departments', 'items'));
     }
 
     /**

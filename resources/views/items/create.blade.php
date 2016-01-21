@@ -52,12 +52,7 @@
                     <div class="form-group">
                         {!! Form::label('item-cat', 'Category', ['class' => 'col-sm-2 control-label']) !!}
                         <div class="col-sm-10">
-                        <select class="form-control" name="category_id">
-                            <option value="">Select an option</option>
-                            @foreach($catagories as $catagory)
-                            <option value="{{$catagory->id}}">{{$catagory->cat_name}}</option>
-                            @endforeach
-                        </select>
+                        {!! Form::select('category_id', $catagories ,null , array('class' => 'form-control')) !!}
                         </div>
                     </div>
                     
