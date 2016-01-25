@@ -67,6 +67,7 @@
                             </div>
                         </div>
                         </div>
+
                         
                         <div class="col-lg-5">
                             <h4 class="text-center">Quick add vehicle</h4>
