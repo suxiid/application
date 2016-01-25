@@ -24,7 +24,7 @@ class Vehicle extends Model
 
     public function estimate()
     {
-        return $this->belongsTo('App\Estimate');
+        return $this->hasMany('App\Estimate');
     }
 
 }

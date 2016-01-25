@@ -11,6 +11,8 @@ use App\Customer;
 use App\Department;
 use App\Item;
 use App\Http\Requests\EstimateRequest;
+use Illuminate\Support\Facades\Input;
+use App\Http\Controllers\VehiclesController;
 
 class EstimatesController extends Controller
 {
@@ -71,6 +73,13 @@ class EstimatesController extends Controller
             $estimate->created_by = $user_id;
             $estimate->save($request->all());
         }else{
+            /*$vehicle = Vehicle::create([
+                'customer_id' => $request->get('customer_id'),
+                'reg_no' => $request->get('reg_no'),
+                'make' => $request->get('make'),
+                'model' => $request->get('model'),
+                'created_by' => $user_id
+            ]);*/
             $vehicle = new Vehicle();
             $vehicle->customer_id = $input['customer_id'];
             $vehicle->reg_no = $input['reg_no'];
@@ -84,9 +93,9 @@ class EstimatesController extends Controller
             $estimate->mileage_in = $input['mileage_in'];
             $estimate->department = $input['department'];
             $estimate->created_by = $user_id;
-            //$vehicle->save($request->all());
+            $estimate->vehicle()->save($request->all());
 
-            $vehicle->estimate()->save($estimate);
+            //$vehicle->estimate()->save($estimate);
         }
 
         return redirect('/estimates');
