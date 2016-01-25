@@ -13,16 +13,7 @@
                             <a href="tables.html"><i class="fa fa-briefcase fa-fw"></i> Jobs</a>
                         </li>
 						<li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> Customers<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">New Customer</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">All Customers</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="{{url('/customers')}}"><i class="fa fa-users fa-fw"></i> Customers</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-truck fa-fw"></i> Suppliers<span class="fa arrow"></span></a>

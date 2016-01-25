@@ -14,5 +14,16 @@ class Vehicle extends Model
         'chasis_no',
         'next_service'
     ];
+
+    public function customer()
+    {
+        return $this->belongsTo('App/Customer');
+    }
+
+    public function estimate()
+    {
+        return $this->belongsTo('App/Estimate');
+    }
+
 }
 

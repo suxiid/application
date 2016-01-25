@@ -24,31 +24,47 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                                 <tr>
-                                    <th>Estimate ID</th>
+                                    <th>ID</th>
                                     <th>Customer</th>
-                                    <th>Reg. No</th>
-                                    <th>Make</th>
+                                    <th>Vehicle</th>
                                     <th>Department</th>
                                     <th>Net Amount</th>    
                                     <th>Date</th>
                                     <th>Job Status</th>
                                     <th>Created By</th>
-                                    <th>Actions</th>
+                                    <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($estimates as $estimate)
                                 <tr class="odd gradeX">
                                     <td>{{$estimate->id}}</td>
-                                    <td>{{$estimate->customer}}</td>
-                                    <td>{{$estimate->reg_no}}</td>
-                                    <td>{{$estimate->location}}</td>
-                                    <td class="center">{{$estimate->unit_of_sale}}</td>
-                                    <td class="center">{{$estimate->quantity}}</td>
-                                    <td class="center">{{$estimate->sale_price}}</td>
+                                    <td>
+                                        @foreach($customers as $customer)
+                                            @if($estimate->customer_id == $customer->id)
+                                                {{$customer->name}}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach($vehicles as $vehicle)
+                                            @if($estimate->vehicle_id == $vehicle->id)
+                                                {{$vehicle->reg_no}}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach($departments as $department)
+                                            @if($estimate->department == $department->id)
+                                                {{$department->name}}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td class="center">{{$estimate->net_amount}}</td>
+                                    <td class="center">{{$estimate->created_at}}</td>
                                     <td class="center">{{$estimate->service_only_cost}}</td>
                                     <td class="center">{{$estimate->pre_order_level}}</td>
-                                    <td><a href="{{url('items/'.$estimate->id.'/edit')}}"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;<a href="#"><i class="fa fa-trash-o fa-fw"></i></a></td>
+                                    <td class="text-center"><a title="Create Job" href="#"><i class="fa fa-briefcase"></i></a>&nbsp;&nbsp;<a title="Edit" href="{{url('items/'.$estimate->id.'/edit')}}"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;&nbsp;<a title="Delete" href="#"><i class="fa fa-trash-o fa-fw"></i></a></td>
                                 </tr> 
                                 @endforeach
                             </tbody>

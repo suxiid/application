@@ -28,11 +28,8 @@
                                     <th>Type</th>
                                     <th>Category</th>
                                     <th>Location</th>
-                                    <th>Unit of Sale</th>
-                                    <th>Quantity</th>
                                     <th>Sale Price</th>
                                     <th>Service Only Cost</th>
-                                    <th>pre-order Level</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -50,11 +47,8 @@
                                         @endif
                                     </td>
                                     <td>{{$item->location}}</td>
-                                    <td class="center">{{$item->unit_of_sale}}</td>
-                                    <td class="center">{{$item->quantity}}</td>
                                     <td class="center">{{$item->sale_price}}</td>
                                     <td class="center">{{$item->service_only_cost}}</td>
-                                    <td class="center">{{$item->pre_order_level}}</td>
                                     <td class="text-center"><a href="{{url('items/'.$item->id.'/edit')}}"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;<a href="#"><i class="fa fa-trash-o fa-fw"></i></a></td>
                                 </tr> 
                                 @endforeach

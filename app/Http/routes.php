@@ -25,15 +25,6 @@ Route::get('/ajax-vehicle', function(){
     return Response::json($vehicles);
 });
 
-/*
-Route::get('/estimates', ['middleware' => 'auth'], function () {
-    return view('estimates.estimates');
-});
-
-Route::get('/new-estimate', ['middleware' => 'auth'], function () {
-    return view('estimates.new-estimate');
-});
-*/
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
@@ -42,3 +33,7 @@ Route::controllers([
 Route::resource('items', 'ItemsController');
 
 Route::resource('estimates', 'EstimatesController');
+
+Route::resource('customers', 'CustomersController');
+
+Route::resource('vehicles', 'VehiclesController');

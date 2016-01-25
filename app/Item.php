@@ -14,7 +14,7 @@ class Item extends Model
         'sale_price',
         'unit_of_sale',
         'pre_order_level',
-        'updated_user',
+        'created_by',
         'category_id',
         'service_only_cost',
         'updated_at'

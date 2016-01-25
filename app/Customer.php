@@ -21,4 +21,14 @@ class Customer extends Model
         'credit_limit',
         'account_sys_id'
     ];
+
+    public function vehicles()
+    {
+        return $this->hasMany('app/Vehicle');
+    }
+
+    public function estimates()
+    {
+        return $this->hasMany('app/Estimate');
+    }
 }

@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : Dhananjaya
 */
 
+form label{
+    /*font-size: 13px;*/
+}
+
 .text-left {
   text-align: left;
 }

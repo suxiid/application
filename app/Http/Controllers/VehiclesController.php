@@ -2,26 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Vehicle;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Estimate;
-use App\Customer;
-use App\Department;
-use App\Item;
-use App\Http\Requests\EstimateRequest;
+use App\Vehicle;
+use App\Http\Requests\VehicleRequest;
 
-class EstimatesController extends Controller
+class VehiclesController extends Controller
 {
-     /**
+    /**
      * Instantiate a new UserController instance.
      */
     public function __construct()
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -29,11 +25,7 @@ class EstimatesController extends Controller
      */
     public function index()
     {
-       $estimates = Estimate::all();
-       $customers = Customer::all();
-       $vehicles = Vehicle::all();
-       $departments = Department::all();
-       return view('estimates.estimates', compact('estimates', 'customers', 'vehicles', 'departments'));
+        //
     }
 
     /**
@@ -43,10 +35,7 @@ class EstimatesController extends Controller
      */
     public function create()
     {
-        $customer_list = Customer::lists('name', 'id')->all();
-        $departments = Department::lists('name', 'id');
-        $items = Item::lists('name', 'id');
-        return view('estimates.create', compact('customer_list', 'departments', 'items'));
+        //
     }
 
     /**
@@ -55,38 +44,22 @@ class EstimatesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EstimateRequest $request)
+    public function store(VehicleRequest $request)
     {
-
-        $user_id = '1';
-
         $input = $request->all();
-
+        $user_id = '1';
         $vehicle = new Vehicle();
         $vehicle->customer_id = $input['customer_id'];
         $vehicle->reg_no = $input['reg_no'];
         $vehicle->make = $input['make'];
         $vehicle->model = $input['model'];
+        $vehicle->chasis_no = $input['chasis_no'];
+        $vehicle->next_service = $input['next_service'];
         $vehicle->created_by = $user_id;
-        //$vehicle->save($request->all());
+        $vehicle->save($request->all());
 
-        $estimate = new Estimate();
-        $estimate->customer_id = $input['customer_id'];
-        if($input['vehicle_id'] != null){
-            $estimate->vehicle_id = $input['vehicle_id'];
-        }
-        $estimate->mileage_in = $input['mileage_in'];
-        $estimate->department = $input['department'];
-        $estimate->created_by = $user_id;
-        //$vehicle->save($request->all());
-
-        $vehicle->estimate()->save($estimate);
-
-
-        
-        return redirect('/estimates');
+        return redirect('/estimates/create');
     }
-    
 
     /**
      * Display the specified resource.

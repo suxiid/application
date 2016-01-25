@@ -39,11 +39,10 @@ class ItemsController extends Controller
         $item->name = $input['name'];
         $item->type = $input['type'];
         $item->location = $input['location'];
-        $item->quantity = $input['quantity'];
         $item->sale_price = $input['sale_price'];
         $item->unit_of_sale = $input['unit_of_sale'];
         $item->pre_order_level = $input['pre_order_level'];
-        $item->updated_user = $user_id;
+        $item->created_by = $user_id;
         $item->category_id = $input['category_id'];
         $item->service_only_cost = $input['service_only_cost'];
         $item->save($request->all());
@@ -58,9 +57,9 @@ class ItemsController extends Controller
     }
     
     public function update($id, ItemRequest $request){
-	$item = Item::findOrFail($id);
-	$item->update($request->all());
-	return redirect('items');        
+        $item = Item::findOrFail($id);
+        $item->update($request->all());
+        return redirect('items');
     }
     
 }
