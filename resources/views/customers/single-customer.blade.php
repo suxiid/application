@@ -5,6 +5,7 @@
             <h3 class="page-header">Customer Details</h3>
         </div>
         <div class="col-lg-9">
+            <a type="button" class="page-header btn btn-primary" data-toggle="modal" data-target="#addVehicleModel">Add Vehicle</a>
             <a href="{{url('customers')}}" type="button" class="page-header btn btn-primary">All Customers</a>
             <a href="{{url('customers/create')}}" type="button" class="page-header btn btn-primary">New Customer</a>
         </div>
@@ -76,6 +77,7 @@
                 </div>
                 <div class="panel-footer">
                     <a href="mailto:{{$customer->email}}" data-toggle="modal" data-target="#sendEmailModel" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                    <a href="mailto:{{$customer->email}}" data-toggle="modal" data-target="#addVehicleModel" type="button" class="btn btn-sm btn-primary">+ <i class="fa fa-truck"></i></a>
                         <span class="pull-right">
                             <a href="{{url('customers/'.$customer->id.'/edit')}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
                             <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
@@ -124,6 +126,61 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     {!! Form::submit('Send Email', ['class' => 'btn btn-primary']) !!}
+
+                </div>
+                {!! Form::close() !!}
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+
+    <div class="modal fade" id="addVehicleModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                {!! Form::open(array('url' => url('vehicles'), 'class'=>'form-horizontal')) !!}
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Add Vehicle</h4>
+                </div>
+                <div class="modal-body">
+                    {!! Form::hidden('customer_id', $customer->id, ['id' => 'invisible_id']) !!}
+                    <div class="form-group">
+                        {!! Form::label('reg_no', 'Registration No', ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('reg_no', null, ['class' => 'form-control', 'required', 'placeholder' => 'ex: CAA-XXXX']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('make', 'Make', ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('make', null, ['class' => 'form-control', 'placeholder' => 'ex: TOYOTA PRIUS']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('model', 'Model', ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('model', null, ['class' => 'form-control', 'placeholder' => 'ex: 2015']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('chasis_no', 'Chasis No', ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('chasis_no', null, ['class' => 'form-control', 'placeholder' => 'Chasis No']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('next_service', 'Next Service', ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('next_service', null, ['class' => 'form-control', 'placeholder' => 'ex: 20000']) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    {!! Form::submit('Save Vehicle', ['class' => 'btn btn-primary']) !!}
 
                 </div>
                 {!! Form::close() !!}

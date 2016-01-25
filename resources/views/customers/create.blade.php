@@ -131,7 +131,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-6">
-                            {!! Form::submit('Save Item', ['class' => 'btn btn-primary']) !!}
+                            {!! Form::submit('Save Customer', ['class' => 'btn btn-primary']) !!}
                             {!! Form::reset('Reset Form', ['class' => 'btn btn-default']) !!}
                         </div>
                     </div>

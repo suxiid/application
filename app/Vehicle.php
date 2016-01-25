@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Customer;
+use App\Estimate;
 
 class Vehicle extends Model
 {
@@ -17,12 +19,12 @@ class Vehicle extends Model
 
     public function customer()
     {
-        return $this->belongsTo('App/Customer');
+        return $this->belongsTo('App\Customer');
     }
 
     public function estimate()
     {
-        return $this->belongsTo('App/Estimate');
+        return $this->belongsTo('App\Estimate');
     }
 
 }

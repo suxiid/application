@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Vehicle;
+use App\Estimate;
 
 class Customer extends Model
 {
@@ -24,11 +26,11 @@ class Customer extends Model
 
     public function vehicles()
     {
-        return $this->hasMany('app/Vehicle');
+        return $this->hasMany('App\Vehicle');
     }
 
     public function estimates()
     {
-        return $this->hasMany('app/Estimate');
+        return $this->hasMany('App\Estimate');
     }
 }

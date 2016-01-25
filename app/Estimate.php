@@ -17,11 +17,11 @@ class Estimate extends Model
     ];
 
     public function customer(){
-        return $this->hasOne('App/Customer');
+        return $this->hasOne('App\Customer');
     }
 
     public function vehicle(){
-        return $this->hasOne('App/Vehicle');
+        return $this->hasOne('App\Vehicle');
     }
 
 }

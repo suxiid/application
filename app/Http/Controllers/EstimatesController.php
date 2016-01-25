@@ -62,28 +62,33 @@ class EstimatesController extends Controller
 
         $input = $request->all();
 
-        $vehicle = new Vehicle();
-        $vehicle->customer_id = $input['customer_id'];
-        $vehicle->reg_no = $input['reg_no'];
-        $vehicle->make = $input['make'];
-        $vehicle->model = $input['model'];
-        $vehicle->created_by = $user_id;
-        //$vehicle->save($request->all());
-
-        $estimate = new Estimate();
-        $estimate->customer_id = $input['customer_id'];
         if($input['vehicle_id'] != null){
+            $estimate = new Estimate();
+            $estimate->customer_id = $input['customer_id'];
             $estimate->vehicle_id = $input['vehicle_id'];
+            $estimate->mileage_in = $input['mileage_in'];
+            $estimate->department = $input['department'];
+            $estimate->created_by = $user_id;
+            $estimate->save($request->all());
+        }else{
+            $vehicle = new Vehicle();
+            $vehicle->customer_id = $input['customer_id'];
+            $vehicle->reg_no = $input['reg_no'];
+            $vehicle->make = $input['make'];
+            $vehicle->model = $input['model'];
+            $vehicle->created_by = $user_id;
+            //$vehicle->save($request->all());
+
+            $estimate = new Estimate();
+            $estimate->customer_id = $input['customer_id'];
+            $estimate->mileage_in = $input['mileage_in'];
+            $estimate->department = $input['department'];
+            $estimate->created_by = $user_id;
+            //$vehicle->save($request->all());
+
+            $vehicle->estimate()->save($estimate);
         }
-        $estimate->mileage_in = $input['mileage_in'];
-        $estimate->department = $input['department'];
-        $estimate->created_by = $user_id;
-        //$vehicle->save($request->all());
 
-        $vehicle->estimate()->save($estimate);
-
-
-        
         return redirect('/estimates');
     }
     
