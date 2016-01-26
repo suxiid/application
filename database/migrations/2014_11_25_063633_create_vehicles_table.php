@@ -22,9 +22,9 @@ class CreateVehiclesTable extends Migration
             $table->string('next_service');
             $table->integer('created_by')->unsigned();
             $table->timestamps();
-            
-            $table->foreign('customer_id')->references('id')->on('customers');
-            $table->foreign('created_by')->references('id')->on('users');
+
+            //$table->foreign('customer_id')->references('id')->on('customers');
+            //$table->foreign('created_by')->references('id')->on('users');
         });
     }
 

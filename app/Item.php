@@ -19,4 +19,10 @@ class Item extends Model
         'service_only_cost',
         'updated_at'
     ];
+
+    public function estimate_details()
+    {
+        return $this->hasMany('App\EstimateDetail');
+    }
+
 }

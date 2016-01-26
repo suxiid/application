@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\EstimateDetail;
 use App\Vehicle;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -93,8 +94,31 @@ class EstimatesController extends Controller
             $estimate->mileage_in = $input['mileage_in'];
             $estimate->department = $input['department'];
             $estimate->created_by = $user_id;
-            $estimate->vehicle()->save($request->all());
 
+            $estimate_detail = new EstimateDetail();
+            /*$estimate_detail->item_id = $input['[item_id]'];
+            $estimate_detail->item_description = $input['[item_description]'];
+            $estimate_detail->units = $input['[units]'];
+            $estimate_detail->rate = $input['[rate]'];
+            $estimate_detail->amount = $input['[amount]'];*/
+
+            $vehicle->save($request->all());
+            $vehicle->estimate()->save($estimate);
+
+            foreach ($estimate_detail as $item_row) {
+                $estimate->estimate_details()->save($item_row);
+            }
+
+            //$estimate->estimate_details()->save($estimate_detail);
+            //var_dump($estimate_detail);die;
+            /*
+
+            foreach ($input['item_id'] as $item) {
+
+                $estimate->items()->save(new Item($item));
+
+            }
+            */
             //$vehicle->estimate()->save($estimate);
         }
 

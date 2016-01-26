@@ -26,8 +26,8 @@ class CreateEstimatesTable extends Migration
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->foreign('vehicle_id')->references('id')->on('vehicles');
             //$table->foreign('parent_estimate_id')->references('id')->on('estimates');
-            $table->foreign('department')->references('id')->on('departments');
-            $table->foreign('created_by')->references('id')->on('users');
+            //$table->foreign('department')->references('id')->on('departments');
+            //$table->foreign('created_by')->references('id')->on('users');
         });
     }
 

@@ -17,11 +17,15 @@ class Estimate extends Model
     ];
 
     public function customer(){
-        return $this->hasOne('App\Customer');
+        return $this->belongsTo('App\Customer');
     }
 
     public function vehicle(){
-        return $this->hasOne('App\Vehicle');
+        return $this->belongsTo('App\Vehicle');
+    }
+
+    public function estimate_details(){
+        return $this->hasMany('App\EstimateDetail');
     }
 
 }
