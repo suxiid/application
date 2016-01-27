@@ -108,19 +108,19 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                {!! Form::select('[item_id][]', $items, null, array('class' => 'form-control')) !!}
+                                                {!! Form::select('item_id[]', $items, null, array('class' => 'form-control')) !!}
                                             </td>
                                             <td>
-                                                {!! Form::text('[item_description][]', null, ['class' => 'form-control', 'placeholder' => 'Not Required | Optional']) !!}
+                                                {!! Form::text('item_description[]', null, ['class' => 'form-control', 'placeholder' => 'Not Required | Optional']) !!}
                                             </td>
                                             <td>
-                                                {!! Form::text('[units][]', null, ['class' => 'form-control', 'placeholder' => 'Add Units']) !!}
+                                                {!! Form::text('units[]', null, ['class' => 'form-control', 'placeholder' => 'Add Units']) !!}
                                             </td>
                                             <td>
-                                                {!! Form::text('[rate][]', null, ['class' => 'form-control', 'placeholder' => 'Add Rate']) !!}
+                                                {!! Form::text('rate[]', null, ['class' => 'form-control', 'placeholder' => 'Add Rate']) !!}
                                             </td>
                                             <td>
-                                                {!! Form::text('[amount][]', null, ['class' => 'form-control', 'placeholder' => 'Add Hrs and Rate', 'id' => 'amount']) !!}
+                                                {!! Form::text('amount[]', null, ['class' => 'form-control', 'placeholder' => 'Add Hrs and Rate', 'id' => 'amount']) !!}
                                             </td>
                                             <td class="text-center"><a id="delete-row" onclick="delTableRow($('#dynamic-tbl'));" href="#"><i class="fa fa-trash-o fa-fw"></i></a></td>
                                         </tr>

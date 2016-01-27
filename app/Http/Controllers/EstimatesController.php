@@ -72,7 +72,52 @@ class EstimatesController extends Controller
             $estimate->mileage_in = $input['mileage_in'];
             $estimate->department = $input['department'];
             $estimate->created_by = $user_id;
+
+            /*$estimate_detail = new EstimateDetail();
+            $estimate_detail->item_id = $input['item_id'];
+            $estimate_detail->item_description = $input['item_description'];
+            $estimate_detail->units = $input['units'];
+            $estimate_detail->rate = $input['rate'];
+            $estimate_detail->initial_amount = $input['amount'];*/
+
+
+
+            /*$estimate_detail->item_id = 1;
+            $estimate_detail->item_description = 'asdqwe';
+            $estimate_detail->units = 10;
+            $estimate_detail->rate = 10;
+            $estimate_detail->initial_amount = 100;*/
+
+           /*$records = [new EstimateDetail([
+                        'item_id' => $input['item_id'],
+                        'item_description' => $input['item_description'],
+                        'units' => $input['units'],
+                        'rate' => $input['rate'],
+                        'amount' => $input['amount']
+                    ])];*/
+            /*$num_elements = 0;
+            $estimate_detail = array();
+            while($num_elements < count($input['item_id']))
+            {
+                $estimate_detail[] = array(
+                'item_id' => $input['item_id'][$num_elements],
+                'item_description' => $input['item_description'][$num_elements],
+                'units' => $input['units'][$num_elements],
+                'rate' => $input['rate'][$num_elements],
+                'amount' => $input['amount'][$num_elements]
+                );
+                $num_elements++;
+            }*/
             $estimate->save($request->all());
+            $estimate_id = $estimate->id;
+            var_dump($estimate_id);die;
+            //$estimate->estimate_details()->save($estimate_detail);
+            //$estimate->estimate_details()->save($estimate_detail);
+            //foreach($records as $record){
+                //$estimate->estimate_details()->saveMany($records);
+           // }
+
+
         }else{
             /*$vehicle = Vehicle::create([
                 'customer_id' => $request->get('customer_id'),
@@ -96,18 +141,20 @@ class EstimatesController extends Controller
             $estimate->created_by = $user_id;
 
             $estimate_detail = new EstimateDetail();
-            /*$estimate_detail->item_id = $input['[item_id]'];
-            $estimate_detail->item_description = $input['[item_description]'];
-            $estimate_detail->units = $input['[units]'];
-            $estimate_detail->rate = $input['[rate]'];
-            $estimate_detail->amount = $input['[amount]'];*/
+            $estimate_detail->item_id = $input['item_id'];
+            $estimate_detail->item_description = $input['item_description'];
+            $estimate_detail->units = $input['units'];
+            $estimate_detail->rate = $input['rate'];
+            $estimate_detail->amount = $input['amount'];
+            var_dump($estimate_detail);
 
             $vehicle->save($request->all());
             $vehicle->estimate()->save($estimate);
+            $estimate->estimate_details()->save($estimate_detail);
 
-            foreach ($estimate_detail as $item_row) {
+            /*foreach ($estimate_detail as $item_row) {
                 $estimate->estimate_details()->save($item_row);
-            }
+            }*/
 
             //$estimate->estimate_details()->save($estimate_detail);
             //var_dump($estimate_detail);die;

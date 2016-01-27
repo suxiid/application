@@ -19,11 +19,11 @@ class EstimateDetail extends Model
 
     public function item()
     {
-        return $this->belongsTo('App\Item');
+        return $this->hasMany('App\Item');
     }
 
     public function estimate()
     {
-        return $this->belongsTo('App\Estimate');
+        return $this->hasMany('App\Estimate');
     }
 }
