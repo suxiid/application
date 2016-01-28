@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\EstimateDetail;
+use App\User;
 use App\Vehicle;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -14,6 +15,7 @@ use App\Item;
 use App\Http\Requests\EstimateRequest;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\VehiclesController;
+use DB;
 
 class EstimatesController extends Controller
 {
@@ -36,7 +38,8 @@ class EstimatesController extends Controller
        $customers = Customer::all();
        $vehicles = Vehicle::all();
        $departments = Department::all();
-       return view('estimates.estimates', compact('estimates', 'customers', 'vehicles', 'departments'));
+        $users = User::all();
+       return view('estimates.estimates', compact('estimates', 'customers', 'vehicles', 'departments', 'users'));
     }
 
     /**
@@ -48,7 +51,7 @@ class EstimatesController extends Controller
     {
         $customer_list = Customer::lists('name', 'id')->all();
         $departments = Department::lists('name', 'id');
-        $items = Item::lists('name', 'id');
+        $items = Item::lists('name', 'id')->all();
         return view('estimates.create', compact('customer_list', 'departments', 'items'));
     }
 
@@ -108,9 +111,37 @@ class EstimatesController extends Controller
                 );
                 $num_elements++;
             }*/
+
+
+
             $estimate->save($request->all());
-            $estimate_id = $estimate->id;
-            var_dump($estimate_id);die;
+
+            for($i=0;$i<count($input['item_id']);$i++)
+            {
+                $estimate_detail = new EstimateDetail();
+                $estimate_detail->item_id = $input['item_id'][$i];
+                $estimate_detail->item_description = $input['item_description'][$i];
+                $estimate_detail->units = $input['units'][$i];
+                $estimate_detail->rate = $input['rate'][$i];
+                $estimate_detail->initial_amount = $input['amount'][$i];
+
+                $estimate->estimate_details()->save($estimate_detail);
+            }
+            /*
+            $data = [];
+            for($i=0;$i<count($input['item_id']);$i++)
+            {
+                $data[] = array(
+                    'estimate_id' => $estimate_id,
+                    'item_id' => $input[$i]['item_id'],
+                    'item_description' => $input[$i]['item_description'],
+                    'units' => $input[$i]['units'],
+                    'rate' => $input[$i]['rate'],
+                    'amount' => $input[$i]['amount']
+                );
+            }
+            EstimateDetail::insert($data);*/
+            //DB::table('estimate_details')->insert($data);
             //$estimate->estimate_details()->save($estimate_detail);
             //$estimate->estimate_details()->save($estimate_detail);
             //foreach($records as $record){
@@ -140,17 +171,20 @@ class EstimatesController extends Controller
             $estimate->department = $input['department'];
             $estimate->created_by = $user_id;
 
-            $estimate_detail = new EstimateDetail();
-            $estimate_detail->item_id = $input['item_id'];
-            $estimate_detail->item_description = $input['item_description'];
-            $estimate_detail->units = $input['units'];
-            $estimate_detail->rate = $input['rate'];
-            $estimate_detail->amount = $input['amount'];
-            var_dump($estimate_detail);
-
             $vehicle->save($request->all());
             $vehicle->estimate()->save($estimate);
-            $estimate->estimate_details()->save($estimate_detail);
+
+            for($i=0;$i<count($input['item_id']);$i++)
+            {
+                $estimate_detail = new EstimateDetail();
+                $estimate_detail->item_id = $input['item_id'][$i];
+                $estimate_detail->item_description = $input['item_description'][$i];
+                $estimate_detail->units = $input['units'][$i];
+                $estimate_detail->rate = $input['rate'][$i];
+                $estimate_detail->initial_amount = $input['amount'][$i];
+
+                $estimate->estimate_details()->save($estimate_detail);
+            }
 
             /*foreach ($estimate_detail as $item_row) {
                 $estimate->estimate_details()->save($item_row);
@@ -181,7 +215,11 @@ class EstimatesController extends Controller
      */
     public function show($id)
     {
-        //
+        $estimate = Estimate::findOrFail($id);
+        $estimate_details = DB::table('estimate_details')->where('estimate_id', '=', $id)->get();
+        $department = Department::where('id', '=', $estimate->department)->firstOrFail();
+        $customer = Customer::where('id', '=', $estimate->customer_id)->firstOrFail();
+        return view('estimates.single-estimate', compact('estimate', 'estimate_details', 'department', 'customer'));
     }
 
     /**

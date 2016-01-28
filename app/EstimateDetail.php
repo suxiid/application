@@ -24,6 +24,6 @@ class EstimateDetail extends Model
 
     public function estimate()
     {
-        return $this->hasMany('App\Estimate');
+        return $this->belongsTo('App\Estimate');
     }
 }

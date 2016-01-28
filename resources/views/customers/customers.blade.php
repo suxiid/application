@@ -43,7 +43,7 @@
                                             {{$vehicle->reg_no}},&nbsp;
                                         @endforeach
                                     </td>
-                                    <td class="text-center"><a href="{{url('customers/'.$customer->id)}}" title="View"><i class="fa fa-male"></i></a>&nbsp;&nbsp;<a href="{{url('customers/'.$customer->id.'/edit')}}" title="Edit"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;&nbsp;<a href="#" title="Delete"><i class="fa fa-trash-o fa-fw"></i></a></td>
+                                    <td class="text-center actions"><a href="{{url('customers/'.$customer->id)}}" title="View"><i class="fa fa-male"></i></a><a href="{{url('customers/'.$customer->id.'/edit')}}" title="Edit"><i class="fa fa-pencil-square-o"></i></a><a href="#" title="Delete"><i class="fa fa-trash-o fa-fw"></i></a></td>
                                 </tr>
                             @endforeach
                             </tbody>

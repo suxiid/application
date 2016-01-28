@@ -34,3 +34,11 @@ form label{
     margin-right: auto;
     display: block;
 }
+
+.actions a{
+    margin-left: 15px;
+}
+
+.info-header{
+    text-align: center;
+}

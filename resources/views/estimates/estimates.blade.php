@@ -30,7 +30,6 @@
                                     <th>Department</th>
                                     <th>Net Amount</th>    
                                     <th>Date</th>
-                                    <th>Job Status</th>
                                     <th>Created By</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
@@ -62,9 +61,14 @@
                                     </td>
                                     <td class="center">{{$estimate->net_amount}}</td>
                                     <td class="center">{{$estimate->created_at}}</td>
-                                    <td class="center">{{$estimate->service_only_cost}}</td>
-                                    <td class="center">{{$estimate->pre_order_level}}</td>
-                                    <td class="text-center"><a title="Create Job" href="#"><i class="fa fa-briefcase"></i></a>&nbsp;&nbsp;<a title="Edit" href="{{url('items/'.$estimate->id.'/edit')}}"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;&nbsp;<a title="Delete" href="#"><i class="fa fa-trash-o fa-fw"></i></a></td>
+                                    <td class="center">
+                                        @foreach($users as $user)
+                                            @if($estimate->created_by == $user->id)
+                                                {{$user->name}}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td class="text-center actions"><a href="{{url('estimates/'.$estimate->id)}}" title="view"><i class="fa fa-newspaper-o"></i></a><a title="Edit" href="{{url('items/'.$estimate->id.'/edit')}}"><i class="fa fa-pencil-square-o"></i></a><a title="Delete" href="#"><i class="fa fa-trash-o fa-fw"></i></a></td>
                                 </tr> 
                                 @endforeach
                             </tbody>

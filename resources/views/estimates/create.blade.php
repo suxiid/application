@@ -40,7 +40,7 @@
                         <div class="form-group">
                             {!! Form::label('customer', 'Customer', ['class' => 'col-sm-2 control-label']) !!}
                             <div class="col-sm-10">
-                            {!! Form::select('customer_id', ['' => 'Select a customer'] + $customer_list ,null , array('class' => 'form-control', 'id' => 'customer')) !!}
+                            {!! Form::select('customer_id', ['' => 'Select a customer'] + $customer_list ,null , array('class' => 'form-control', 'id' => 'customer', 'required')) !!}
                             </div>
                         </div>
                     
@@ -108,21 +108,21 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                {!! Form::select('item_id[]', $items, null, array('class' => 'form-control')) !!}
+                                                {!! Form::select('item_id[]', ['' => 'Select an item'] + $items, null, array('class' => 'form-control', 'required')) !!}
                                             </td>
                                             <td>
                                                 {!! Form::text('item_description[]', null, ['class' => 'form-control', 'placeholder' => 'Not Required | Optional']) !!}
                                             </td>
                                             <td>
-                                                {!! Form::text('units[]', null, ['class' => 'form-control', 'placeholder' => 'Add Units']) !!}
+                                                {!! Form::text('units[]', null, ['class' => 'form-control', 'placeholder' => 'Add Units', 'required']) !!}
                                             </td>
                                             <td>
-                                                {!! Form::text('rate[]', null, ['class' => 'form-control', 'placeholder' => 'Add Rate']) !!}
+                                                {!! Form::text('rate[]', null, ['class' => 'form-control', 'placeholder' => 'Add Rate', 'required']) !!}
                                             </td>
                                             <td>
                                                 {!! Form::text('amount[]', null, ['class' => 'form-control', 'placeholder' => 'Add Hrs and Rate', 'id' => 'amount']) !!}
                                             </td>
-                                            <td class="text-center"><a id="delete-row" onclick="delTableRow($('#dynamic-tbl'));" href="#"><i class="fa fa-trash-o fa-fw"></i></a></td>
+                                            <td class="text-center actions"><a id="delete-row" onclick="delTableRow($('#dynamic-tbl'));" href="#"><i class="fa fa-times"></i></a></td>
                                         </tr>
                                         
                                     </tbody>

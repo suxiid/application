@@ -49,7 +49,7 @@
                                     <td>{{$item->location}}</td>
                                     <td class="center">{{$item->sale_price}}</td>
                                     <td class="center">{{$item->service_only_cost}}</td>
-                                    <td class="text-center"><a href="{{url('items/'.$item->id.'/edit')}}"><i class="fa fa-pencil fa-fw"></i></a>&nbsp;<a href="#"><i class="fa fa-trash-o fa-fw"></i></a></td>
+                                    <td class="text-center actions"><a href="{{url('items/'.$item->id.'/edit')}}"><i class="fa fa-pencil-square-o"></i></a><a href="#"><i class="fa fa-trash-o fa-fw"></i></a></td>
                                 </tr> 
                                 @endforeach
                             </tbody>
