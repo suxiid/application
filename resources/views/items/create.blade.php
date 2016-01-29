@@ -38,7 +38,7 @@
                     <div class="form-group">
                         {!! Form::label('item-name', 'Item Name', ['class' => 'col-sm-3 control-label']) !!}
                         <div class="col-sm-9">
-                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Item Name']) !!} 
+                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Item name is the default item description in estimates']) !!}
                         </div>
                     </div>
                     
@@ -71,9 +71,9 @@
                     </div>
                     
                     <div class="form-group">
-                        {!! Form::label('sale-price', 'Sale Price', ['class' => 'col-sm-3 control-label']) !!}
+                        {!! Form::label('sale-price', 'Sale Price (Rate)', ['class' => 'col-sm-3 control-label']) !!}
                         <div class="col-sm-9">
-                        {!! Form::text('sale_price', null, ['class' => 'form-control', 'placeholder' => 'Sale Price']) !!} 
+                        {!! Form::text('sale_price', null, ['class' => 'form-control', 'placeholder' => 'Sale price is the rate use in estimates', 'required']) !!}
                         </div>
                     </div>
                     

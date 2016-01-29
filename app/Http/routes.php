@@ -25,6 +25,12 @@ Route::get('/ajax-vehicle', function(){
     return Response::json($vehicles);
 });
 
+Route::get('/ajax-item', function(){
+    $item_id = Input::get('item_id');
+    $item = App\Item::where('id', '=', $item_id)->get();
+    return Response::json($item);
+});
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',

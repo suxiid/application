@@ -106,18 +106,18 @@
                                             <th class="text-center">Actions</th>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr id="1">
                                             <td>
-                                                {!! Form::select('item_id[]', ['' => 'Select an item'] + $items, null, array('class' => 'form-control', 'required')) !!}
+                                                {!! Form::select('item_id[]', ['' => 'Select an item'] + $items, null, array('class' => 'form-control', 'id' => 'itemId', 'required')) !!}
                                             </td>
                                             <td>
-                                                {!! Form::text('item_description[]', null, ['class' => 'form-control', 'placeholder' => 'Not Required | Optional']) !!}
+                                                {!! Form::text('item_description[]', null, ['class' => 'form-control', 'id' => 'item_description', 'placeholder' => 'Not Required | Optional']) !!}
                                             </td>
                                             <td>
                                                 {!! Form::text('units[]', null, ['class' => 'form-control', 'placeholder' => 'Add Units', 'required']) !!}
                                             </td>
                                             <td>
-                                                {!! Form::text('rate[]', null, ['class' => 'form-control', 'placeholder' => 'Add Rate', 'required']) !!}
+                                                {!! Form::text('rate[]', null, ['class' => 'form-control', 'id' => 'rate', 'placeholder' => 'Add Rate', 'required']) !!}
                                             </td>
                                             <td>
                                                 {!! Form::text('amount[]', null, ['class' => 'form-control', 'placeholder' => 'Add Hrs and Rate', 'id' => 'amount']) !!}
@@ -139,7 +139,6 @@
             </div>
         </div>
     </div>
-
 
 
     <div class="modal fade" id="addVehicleModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
