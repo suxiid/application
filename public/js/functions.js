@@ -32,6 +32,7 @@ $('#customer').change(function(e) {
     });
 });
 
+
 /*
  * Dynamic table row adding and deleting functions
  */
@@ -42,6 +43,7 @@ function addTableRow(jQtable){
 	jQtable.each(function(){
 		var tds = '<tr id='+rowId+'>';
 		jQuery.each($('tr:last td', this), function() {tds += '<td>'+$(this).html()+'</td>';});
+        $(this).find('input').attr("id","itemId" + rowId);
 		tds += '</tr>';
 		if($('tbody', this).length > 0){$('tbody', this).append(tds);
 		}else {$(this).append(tds);}
@@ -74,3 +76,5 @@ $('#dynamic-tbl #itemId').change(function(e) {
         });
     });
 });
+
+
