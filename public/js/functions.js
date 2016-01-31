@@ -36,6 +36,7 @@ $('#customer').change(function(e) {
 /*
  * Dynamic table row adding and deleting functions
  */
+/*
 function addTableRow(jQtable){
     var rowId = parseInt($('#dynamic-tbl tbody tr:last').attr('id'));
     ++rowId;
@@ -43,12 +44,40 @@ function addTableRow(jQtable){
 	jQtable.each(function(){
 		var tds = '<tr id='+rowId+'>';
 		jQuery.each($('tr:last td', this), function() {tds += '<td>'+$(this).html()+'</td>';});
-        $(this).find('input').attr("id","itemId" + rowId);
 		tds += '</tr>';
 		if($('tbody', this).length > 0){$('tbody', this).append(tds);
 		}else {$(this).append(tds);}
 	});
 }
+*/
+
+/*
+$(function(){
+    $("#dynamic-tbl").on('click', 'button.addRow', function() {
+        var $tr = $(this).closest('tr');
+        var allTrs = $tr.closest('table').find('tr');
+        var lastTr = allTrs[allTrs.length-1];
+        var $clone = $(lastTr).clone();
+        $clone.find('td').each(function(){
+            var el = $(this).find(':first-child');
+            var id = el.attr('id') || null;
+            if(id) {
+                var i = id.substr(id.length-1);
+                var prefix = id.substr(0, (id.length-1));
+                el.attr('id', prefix+(+i+1));
+                el.attr('name', prefix+(+i+1));
+            }
+        });
+        $clone.find('input:text').val('');
+        $tr.closest('table').append($clone);
+    });
+
+    $("#table-data").on('change', 'select', function(){
+        var val = $(this).val();
+        $(this).closest('tr').find('input:text').val(val);
+    });
+});*/
+
 
 $(function(){
 	$('table').on('click','#delete-row',function(e){
@@ -78,3 +107,28 @@ $('#dynamic-tbl #itemId').change(function(e) {
 });
 
 
+$(function(){
+    $("#dynamic-tbl").on('click', 'input.addButton', function() {
+        var $tr = $(this).closest('tr');
+        var allTrs = $tr.closest('table').find('tr');
+        var lastTr = allTrs[allTrs.length-1];
+        var $clone = $(lastTr).clone();
+        $clone.find('td').each(function(){
+            var el = $(this).find(':first-child');
+            var id = el.attr('id') || null;
+            if(id) {
+                var i = id.substr(id.length-1);
+                var prefix = id.substr(0, (id.length-1));
+                el.attr('id', prefix+(+i+1));
+                el.attr('name', prefix+(+i+1));
+            }
+        });
+        $clone.find('input:text').val('');
+        $tr.closest('table').append($clone);
+    });
+
+    $("#dynamic-tbl").on('change', 'select', function(){
+        var val = $(this).val();
+        $(this).closest('tr').find('input:text').val(val);
+    });
+});
