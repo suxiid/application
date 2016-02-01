@@ -85,8 +85,14 @@ $("#dynamic-tbl").on('change', 'input[name="units[]"]', function(e){
     var rate = $(self).closest('tr').find('input[name="rate[]"]').val();
     var ammount = (units*rate).toFixed(2);
     $(self).closest('tr').find('input[name="amount[]"]').val(ammount);
-});
 
+    var sum = 0;
+    $(".amount").each(function(){
+        sum += +$(this).val();
+    });
+    $(".total").val(sum);
+});
+/*
 function calcTotal() {
     var sum = 0;
     $(".amount").each(function(){
@@ -94,3 +100,4 @@ function calcTotal() {
     });
     $(".total").val(sum);
 }
+*/

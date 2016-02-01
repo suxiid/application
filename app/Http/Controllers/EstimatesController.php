@@ -74,6 +74,7 @@ class EstimatesController extends Controller
             $estimate->vehicle_id = $input['vehicle_id'];
             $estimate->mileage_in = $input['mileage_in'];
             $estimate->department = $input['department'];
+            $estimate->net_amount = $input['net_amount'];
             $estimate->created_by = $user_id;
 
             /*$estimate_detail = new EstimateDetail();
@@ -169,6 +170,7 @@ class EstimatesController extends Controller
             $estimate->customer_id = $input['customer_id'];
             $estimate->mileage_in = $input['mileage_in'];
             $estimate->department = $input['department'];
+            $estimate->net_amount = $input['net_amount'];
             $estimate->created_by = $user_id;
 
             $vehicle->save($request->all());

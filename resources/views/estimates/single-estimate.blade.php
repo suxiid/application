@@ -44,15 +44,18 @@
                         </tr>
                         </thead>
                         <tbody>
-
+                        <?php $i = 1; ?>
                         @foreach($estimate_details as $detail)
                             <tr class="odd gradeX">
-                                <td>{{$detail->item_id}}</td>
+                                <td>
+                                    <?php echo $i; ?>
+                                </td>
                                 <td>{{$detail->item_description}}</td>
                                 <td>{{$detail->units}}</td>
                                 <td>{{$detail->rate}}</td>
                                 <td>{{$detail->initial_amount}}</td>
                             </tr>
+                            <?php $i++ ?>
                         @endforeach
                         </tbody>
                     </table>

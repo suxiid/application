@@ -5,8 +5,8 @@
             <h3 class="page-header">Add New Estimate</h3>
         </div>
         <div class="col-lg-9">
-        <a href="{{url('customers/create')}}" type="button" class="page-header btn btn-primary">+ <i class="fa fa-male"></i> Add Customer</a>
-        <a href="" data-toggle="modal" data-target="#addVehicleModel" type="button" class="page-header btn btn-primary">+ <i class="fa fa-truck"></i> Add Vehicle</a>
+        <a href="{{url('customers/create')}}" type="button" class="page-header btn btn-primary"><i class="fa fa-male"></i> Add Customer</a>
+        <a href="" data-toggle="modal" data-target="#addVehicleModel" type="button" class="page-header btn btn-primary"><i class="fa fa-truck"></i> Add Vehicle</a>
         <a href="{{url('estimates')}}" type="button" class="page-header btn btn-primary">All Estimates</a>
         </div>
         <!-- /.col-lg-12 -->
@@ -47,9 +47,12 @@
                         <div class="form-group">
                             {!! Form::label('vehicle', 'Vehicle', ['class' => 'col-sm-2 control-label']) !!}
                             <div class="col-sm-10">
+                                <!--
                                 <select class="form-control" name="vehicle_id" id="vehicle">
                                     <option value=""></option>
                                 </select>
+                                -->
+                                {!! Form::select('vehicle_id', ['' => 'Select a customer'], null , array('class' => 'form-control', 'id' => 'vehicle')) !!}
                             </div>
                         </div>
                     
@@ -134,18 +137,18 @@
                                 <button class="btn btn-primary" type="button" onclick="addTableRow($('#dynamic-tbl'));" class="addRow" id="addRow">add row</button>
                             </div>
                             <div class="col-lg-2">
-                                <button class="btn btn-info" type="button" onclick="calcTotal($('#dynamic-tbl'));" class="addRow" id="addRow">Calculate Total</button>
-                            </div>
-                            <div class="col-lg-1 text-right">
-                                <strong>Total: </strong>
-                            </div>
-                            <div class="col-lg-2">
-                                <input type="text" class="form-control text-right total" readonly>
-                            </div>
-                            <div class="col-lg-2">
-                            </div>
-                            <div class="col-lg-2">
+                                <!--<button class="btn btn-info" type="button" onclick="calcTotal($('#dynamic-tbl'));" class="addRow" id="addRow">Calculate Total</button>-->
                                 {!! Form::submit('Save Estimate', ['class' => 'btn btn-success']) !!}
+                            </div>
+
+                            <div class="col-lg-1 text-right">
+                                <p class="estimate-total"><strong>Total: </strong></p>
+                            </div>
+                            <div class="col-lg-2">
+                                {!! Form::text('net_amount', null, ['class' => 'form-control text-right total', 'id' => 'total', 'readonly']) !!}
+                            </div>
+                            <div class="col-lg-4">
+
                             </div>
                             <div class="col-lg-1">
                                 {!! Form::reset('Reset Form', ['class' => 'btn btn-danger']) !!}
