@@ -43,3 +43,5 @@ Route::resource('estimates', 'EstimatesController');
 Route::resource('customers', 'CustomersController');
 
 Route::resource('vehicles', 'VehiclesController');
+
+Route::resource('suppliers', 'SuppliersController');

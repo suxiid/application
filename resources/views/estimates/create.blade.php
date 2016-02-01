@@ -95,7 +95,7 @@
                         </div>                    
                     
                         <div class="row add-estimate-item-section">
-                            <div class="col-lg-12">
+                            <div class="col-lg-12" id="estmate-items-wrapper">
                                 <table class="table table-bordered" id="dynamic-tbl">
                                     <thead>
                                             <th>Item</th>
@@ -108,29 +108,36 @@
                                     <tbody>
                                         <tr id="1">
                                             <td>
-                                                {!! Form::select('item_id[]', ['' => 'Select an item'] + $items, null, array('class' => 'form-control', 'id' => 'Id.0', 'required')) !!}
+                                                {!! Form::select('item_id[]', ['' => 'Select an item'] + $items, null, array('class' => 'form-control itemId', 'id' => 'itemId', 'required')) !!}
                                             </td>
                                             <td>
-                                                {!! Form::text('item_description[]', null, ['class' => 'form-control', 'id' => 'desc.0', 'placeholder' => 'Not Required | Optional']) !!}
+                                                {!! Form::text('item_description[]', null, ['class' => 'form-control item_description', 'id' => 'item_description', 'placeholder' => 'Not Required | Optional']) !!}
                                             </td>
                                             <td>
-                                                {!! Form::text('units[]', null, ['class' => 'form-control', 'placeholder' => 'Add Units', 'id' => 'units.0', 'required']) !!}
+                                                {!! Form::text('units[]', null, ['class' => 'form-control', 'placeholder' => 'Add Units', 'id' => 'units', 'required']) !!}
                                             </td>
                                             <td>
-                                                {!! Form::text('rate[]', null, ['class' => 'form-control', 'placeholder' => 'Add Rate', 'id' => 'rate.0', 'required']) !!}
+                                                {!! Form::text('rate[]', null, ['class' => 'form-control', 'placeholder' => 'Add Rate', 'id' => 'rate', 'required']) !!}
                                             </td>
                                             <td>
-                                                {!! Form::text('amount[]', null, ['class' => 'form-control', 'id' => 'amount.0', 'placeholder' => 'Add Hrs and Rate']) !!}
+                                                {!! Form::text('amount[]', null, ['class' => 'form-control amount', 'id' => 'amount', 'placeholder' => 'Add Hrs and Rate']) !!}
                                             </td>
-                                            <td class="text-center actions"><a id="delete-row" onclick="delTableRow($('#dynamic-tbl'));" href="#"><i class="fa fa-times"></i></a></td>
-                                            <td><input type="button" class="addButton" value="Add" /></td>
+                                            <td class="text-center actions"><a id="delete-row" href="#"><i class="fa fa-times"></i></a></td>
                                         </tr>
                                         
                                     </tbody>
                                 </table>
-                                <button class="btn btn-primary" type="button" class="addRow" id="addRow">add row</button>
-                                {!! Form::submit('Save Estimate', ['class' => 'btn btn-primary']) !!} 
-                                {!! Form::reset('Reset Form', ['class' => 'btn btn-default']) !!} 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <button class="btn btn-primary" type="button" onclick="addTableRow($('#dynamic-tbl'));" class="addRow" id="addRow">add row</button>
+                                {!! Form::submit('Save Estimate', ['class' => 'btn btn-primary']) !!}
+                                {!! Form::reset('Reset Form', ['class' => 'btn btn-default']) !!}
+                            </div>
+                            <div class="col-lg-4">
+                                <button class="btn btn-primary" type="button" onclick="calcTotal($('#dynamic-tbl'));" class="addRow" id="addRow">Calculate Total</button>
+                                Total: <span class="total"></span>
                             </div>
                         </div>
                     
@@ -140,42 +147,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="table-data">
-        <tr>
-            <td>SelectOne</td>
-            <td>Select two</td>
-            <td>TetxBox</td>
-            <td>Select Three</td>
-            <td>Add</td>
-        </tr>
-        <tr>
-            <td>
-                <select id="Id.0" name="Id.0">
-                    <option value=1>One</option>
-                    <option value=2>Two</option>
-                </select>
-            </td>
-            <td>
-                <select id="Comparator.0" name="Comparator.0">
-                    <option value=1>One</option>
-                    <option value=2>Two</option>
-                </select>
-            </td>
-            <td><input type="text" id="Integer.0" name="Integer.0"/></td>
-            <td>
-                <select id="Value.0" name="Value.0">
-                    <option value=1>One</option>
-                    <option value=2>Two</option>
-                </select>
-            </td>
-            <td><input type="button" class="addButton" value="Add" /></td>
-        </tr>
-    </table>
-
 
 
     <div class="modal fade" id="addVehicleModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">

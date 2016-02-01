@@ -36,7 +36,7 @@ $('#customer').change(function(e) {
 /*
  * Dynamic table row adding and deleting functions
  */
-/*
+
 function addTableRow(jQtable){
     var rowId = parseInt($('#dynamic-tbl tbody tr:last').attr('id'));
     ++rowId;
@@ -49,35 +49,6 @@ function addTableRow(jQtable){
 		}else {$(this).append(tds);}
 	});
 }
-*/
-
-/*
-$(function(){
-    $("#dynamic-tbl").on('click', 'button.addRow', function() {
-        var $tr = $(this).closest('tr');
-        var allTrs = $tr.closest('table').find('tr');
-        var lastTr = allTrs[allTrs.length-1];
-        var $clone = $(lastTr).clone();
-        $clone.find('td').each(function(){
-            var el = $(this).find(':first-child');
-            var id = el.attr('id') || null;
-            if(id) {
-                var i = id.substr(id.length-1);
-                var prefix = id.substr(0, (id.length-1));
-                el.attr('id', prefix+(+i+1));
-                el.attr('name', prefix+(+i+1));
-            }
-        });
-        $clone.find('input:text').val('');
-        $tr.closest('table').append($clone);
-    });
-
-    $("#table-data").on('change', 'select', function(){
-        var val = $(this).val();
-        $(this).closest('tr').find('input:text').val(val);
-    });
-});*/
-
 
 $(function(){
 	$('table').on('click','#delete-row',function(e){
@@ -87,48 +58,40 @@ $(function(){
 });
 
 
-/*
- * Estimate Item Description Ajax function
- */
-$('#dynamic-tbl #itemId').change(function(e) {
-    //console.log(e);
+$("#dynamic-tbl").on('change', 'select', function(e){
     var item_id = e.target.value;
+    var self = this;
     //ajax
     $.get('/ajax-item?item_id=' + item_id, function(data){
         //success data
         //console.log(data);
-        $('#item_description').empty();
-        $('#rate').empty();
         $.each(data, function(index, itemObj){
-            $('#item_description').val(itemObj.name);
-            $('#rate').val(itemObj.sale_price);
+            $(self) // use self not this
+                .closest('tr') // get the parent(closest) tr
+                .find('input[name="item_description[]"]')// now find the item_description by name as id must be unique
+                .val(itemObj.name);
+            $(self)
+                .closest('tr')
+                .find('input[name="rate[]"]')
+                .val(itemObj.sale_price);
         });
     });
 });
 
 
-$(function(){
-    $("#dynamic-tbl").on('click', 'input.addButton', function() {
-        var $tr = $(this).closest('tr');
-        var allTrs = $tr.closest('table').find('tr');
-        var lastTr = allTrs[allTrs.length-1];
-        var $clone = $(lastTr).clone();
-        $clone.find('td').each(function(){
-            var el = $(this).find(':first-child');
-            var id = el.attr('id') || null;
-            if(id) {
-                var i = id.substr(id.length-1);
-                var prefix = id.substr(0, (id.length-1));
-                el.attr('id', prefix+(+i+1));
-                el.attr('name', prefix+(+i+1));
-            }
-        });
-        $clone.find('input:text').val('');
-        $tr.closest('table').append($clone);
+$("#dynamic-tbl").on('change', 'input[name="units[]"]', function(e){
+    var units = e.target.value;
+    var self = this;
+    var rate = $(self).closest('tr').find('input[name="rate[]"]').val();
+    var ammount = (units*rate).toFixed(2);
+    $(self).closest('tr').find('input[name="amount[]"]').val(ammount);
+});
+
+function calcTotal() {
+    /*var sum = 0;
+    $(".amount").each(function(){
+        sum += +$(this).val();
     });
 
-    $("#dynamic-tbl").on('change', 'select', function(){
-        var val = $(this).val();
-        $(this).closest('tr').find('input:text').val(val);
-    });
-});
+    $(".total").val(sum);*/
+}

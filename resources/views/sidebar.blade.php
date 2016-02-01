@@ -16,16 +16,7 @@
                             <a href="{{url('/customers')}}"><i class="fa fa-users fa-fw"></i> Customers</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-truck fa-fw"></i> Suppliers<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">New Supplier</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">All Suppliers</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="{{url('/suppliers')}}"><i class="fa fa-truck fa-fw"></i> Suppliers</a>
                         </li>
                         <li>
                             <a href="{{url('items')}}"><i class="fa fa-cogs fa-fw"></i> Items</a>
