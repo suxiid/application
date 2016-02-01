@@ -217,14 +217,10 @@ class EstimatesController extends Controller
     {
         $estimate = Estimate::findOrFail($id);
         $estimate_details = DB::table('estimate_details')->where('estimate_id', '=', $id)->get();
-        foreach($estimate_details as $detail)
-        {
-            $items = Item::findOrFail($detail->item_id);
-        }
         $department = Department::where('id', '=', $estimate->department)->firstOrFail();
         $customer = Customer::where('id', '=', $estimate->customer_id)->firstOrFail();
         $vehicle = Vehicle::where('id', '=', $estimate->vehicle_id)->firstOrFail();
-        return view('estimates.single-estimate', compact('estimate', 'estimate_details', 'department', 'customer', 'vehicle', 'items'));
+        return view('estimates.single-estimate', compact('estimate', 'estimate_details', 'department', 'customer', 'vehicle'));
     }
 
     /**

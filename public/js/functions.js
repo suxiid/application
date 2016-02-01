@@ -88,10 +88,9 @@ $("#dynamic-tbl").on('change', 'input[name="units[]"]', function(e){
 });
 
 function calcTotal() {
-    /*var sum = 0;
+    var sum = 0;
     $(".amount").each(function(){
         sum += +$(this).val();
     });
-
-    $(".total").val(sum);*/
+    $(".total").val(sum);
 }

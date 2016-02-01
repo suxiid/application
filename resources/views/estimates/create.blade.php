@@ -5,8 +5,8 @@
             <h3 class="page-header">Add New Estimate</h3>
         </div>
         <div class="col-lg-9">
-        <a href="{{url('customers/create')}}" type="button" class="page-header btn btn-primary">Create Customer</a>
-        <a href="" data-toggle="modal" data-target="#addVehicleModel" type="button" class="page-header btn btn-primary">Add Vehicle</a>
+        <a href="{{url('customers/create')}}" type="button" class="page-header btn btn-primary">+ <i class="fa fa-male"></i> Add Customer</a>
+        <a href="" data-toggle="modal" data-target="#addVehicleModel" type="button" class="page-header btn btn-primary">+ <i class="fa fa-truck"></i> Add Vehicle</a>
         <a href="{{url('estimates')}}" type="button" class="page-header btn btn-primary">All Estimates</a>
         </div>
         <!-- /.col-lg-12 -->
@@ -130,14 +130,25 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-8">
+                            <div class="col-lg-1">
                                 <button class="btn btn-primary" type="button" onclick="addTableRow($('#dynamic-tbl'));" class="addRow" id="addRow">add row</button>
-                                {!! Form::submit('Save Estimate', ['class' => 'btn btn-primary']) !!}
-                                {!! Form::reset('Reset Form', ['class' => 'btn btn-default']) !!}
                             </div>
-                            <div class="col-lg-4">
-                                <button class="btn btn-primary" type="button" onclick="calcTotal($('#dynamic-tbl'));" class="addRow" id="addRow">Calculate Total</button>
-                                Total: <span class="total"></span>
+                            <div class="col-lg-2">
+                                <button class="btn btn-info" type="button" onclick="calcTotal($('#dynamic-tbl'));" class="addRow" id="addRow">Calculate Total</button>
+                            </div>
+                            <div class="col-lg-1 text-right">
+                                <strong>Total: </strong>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="text" class="form-control text-right total" readonly>
+                            </div>
+                            <div class="col-lg-2">
+                            </div>
+                            <div class="col-lg-2">
+                                {!! Form::submit('Save Estimate', ['class' => 'btn btn-success']) !!}
+                            </div>
+                            <div class="col-lg-1">
+                                {!! Form::reset('Reset Form', ['class' => 'btn btn-danger']) !!}
                             </div>
                         </div>
                     

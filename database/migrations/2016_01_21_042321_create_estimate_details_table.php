@@ -16,7 +16,7 @@ class CreateEstimateDetailsTable extends Migration
             $table->increments('id');
             $table->integer('estimate_id')->unsigned();
             $table->integer('item_id')->unsigned();
-            $table->integer('item_description');
+            $table->string('item_description');
             $table->integer('units');
             $table->integer('rate');
             $table->string('labor_amount_final');

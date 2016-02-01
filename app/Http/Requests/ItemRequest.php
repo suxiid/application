@@ -44,11 +44,7 @@ class ItemRequest extends Request
             {
                 return [
                     'name' => 'required',
-                    'location' => 'required',
-                    'quantity' => 'required|numeric',
-                    'sale_price' => 'required|numeric',
-                    'pre_order_level' => 'required|numeric',
-                    'service_only_cost' => 'required|numeric',
+                    'sale_price' => 'required|numeric'
                 ];
             }
             default:break;

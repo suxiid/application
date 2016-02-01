@@ -1,27 +1,24 @@
 @extends('admin')
 @section('content')
 
-        <!-- /../.info-header -->
-        @include('../info-header')
-
-<div class="row">
+<div class="row add-estimate-item-section">
     <div class="col-md-6">
-        <p>Department: {{$department->name}}</p>
-        <p><strong>Customer Details:</strong></p>
-        <p>Customer Name: {{$customer->name}}</p>
-        <p>Customer Address: {{$customer->address1}},{{$customer->address2}},{{$customer->city}}</p>
-        <p>Tel: {{$customer->telephone}},Mobile: {{$customer->mobile}}</p>
-        <p>Fax: {{$customer->fax}}</p>
-        <p>Email: {{$customer->email}}</p>
+        <p><strong>Department: </strong>{{$department->name}}</p>
+        <p><strong><u>Customer Details:</u></strong></p>
+        <p><strong>Name: </strong>{{$customer->name}}</p>
+        <p><strong>Address: </strong>{{$customer->address1}},{{$customer->address2}},{{$customer->city}}</p>
+        <p><strong>Tel: </strong>{{$customer->telephone}} <strong>Mobile: </strong>{{$customer->mobile}}</p>
+        <p><strong>Fax: </strong>{{$customer->fax}}</p>
+        <p><strong>Email: </strong>{{$customer->email}}</p>
     </div>
     <div class="col-md-6">
-        <p>Date: {{$estimate->created_at}}</p>
-        <p><strong>Vehicle Details:</strong></p>
-        <p>Registration No: {{$vehicle->reg_no}}</p>
-        <p>Make: {{$vehicle->make}}</p>
-        <p>Model: {{$vehicle->model}}</p>
-        <p>Chasis No: {{$vehicle->chasis_no}}</p>
-        <p>Mileage In: {{$estimate->mileage_in}}</p>
+        <p><strong>Date: </strong>{{$estimate->created_at}}</p>
+        <p><strong><u>Vehicle Details:</u></strong></p>
+        <p><strong>Registration No: </strong>{{$vehicle->reg_no}}</p>
+        <p><strong>Make: </strong>{{$vehicle->make}}</p>
+        <p><strong>Model: </strong>{{$vehicle->model}}</p>
+        <p><strong>Chasis No: </strong>{{$vehicle->chasis_no}}</p>
+        <p><strong>Mileage In: </strong>{{$estimate->mileage_in}}</p>
     </div>
 </div>
 
@@ -41,7 +38,7 @@
                         <tr>
                             <th>S. No</th>
                             <th>Description</th>
-                            <th>Hrs</th>
+                            <th>Units</th>
                             <th>Rate</th>
                             <th class="text-center">Amount</th>
                         </tr>
@@ -51,10 +48,10 @@
                         @foreach($estimate_details as $detail)
                             <tr class="odd gradeX">
                                 <td>{{$detail->item_id}}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$detail->item_description}}</td>
+                                <td>{{$detail->units}}</td>
+                                <td>{{$detail->rate}}</td>
+                                <td>{{$detail->initial_amount}}</td>
                             </tr>
                         @endforeach
                         </tbody>
