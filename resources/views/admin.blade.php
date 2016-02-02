@@ -25,7 +25,7 @@
 
     <!-- Custom CSS -->
     <link href="{{url('dist/css/sb-admin-2.css')}}" rel="stylesheet">
-    
+
     <!-- Custom CSS -->
     <link href="{{url('css/styles.css')}}" rel="stylesheet">
 
