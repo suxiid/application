@@ -52,7 +52,7 @@
                                     <option value=""></option>
                                 </select>
                                 -->
-                                {!! Form::select('vehicle_id', ['' => 'Select a customer'], null , array('class' => 'form-control', 'id' => 'vehicle')) !!}
+                                {!! Form::select('vehicle_id', ['' => 'Select a vehicle'], null , array('class' => 'form-control', 'id' => 'vehicle')) !!}
                             </div>
                         </div>
                     

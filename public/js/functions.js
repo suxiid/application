@@ -101,3 +101,15 @@ function calcTotal() {
     $(".total").val(sum);
 }
 */
+
+/*
+ *
+ * Date picker for create job form
+ */
+$(function () {
+    $('#promised-date').datepicker({
+        viewMode: 'years',
+        autoclose: true,
+        todayHighlight: true
+    });
+});

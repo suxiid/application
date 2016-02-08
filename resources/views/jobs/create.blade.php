@@ -16,13 +16,9 @@
             <div class="panel panel-info">
                 <div class="panel-heading"><strong>Customer Details:</strong></div>
                 <div class="panel-body">
-                    <p><strong>Name: </strong>{{$customer->name}}</p>
-                    <p><strong>Address: </strong>{{$customer->address1}},{{$customer->address2}},{{$customer->city}}</p>
-                    <p><strong>Tel: </strong>{{$customer->telephone}} <strong>Mobile: </strong>{{$customer->mobile}}</p>
-                    <p><strong>Fax: </strong>{{$customer->fax}}</p>
-                    <p><strong>Email: </strong>{{$customer->email}}</p>
-                    <p><strong>VAT: </strong>{{$customer->vat_no}}</p>
-                    <p><strong>Contact Person: </strong>{{$customer->contact_person}}</p>
+                    <div class="col-sm-3"><p><strong>Name: </strong></p></div><div class="col-sm-9"><p>{{$customer->name}}</p></div>
+                    <div class="col-sm-3"><p><strong>Address: </strong></p></div><div class="col-sm-9"><p>{{$customer->address1}},{{$customer->address2}},{{$customer->city}}</p></div>
+                    <div class="col-sm-3"><p><strong>Tel: </strong></p></div><div class="col-sm-9"><p>{{$customer->telephone}} @if($customer->mobile != null), {{$customer->mobile}}@endif</p></div>
                 </div>
             </div>
         </div>
@@ -30,14 +26,60 @@
             <div class="panel panel-info">
                 <div class="panel-heading"><strong>Vehicle Details:</strong></div>
                 <div class="panel-body">
-                    <p><strong>Registration No: </strong>{{$vehicle->reg_no}}</p>
-                    <p><strong>Make: </strong>{{$vehicle->make}}</p>
-                    <p><strong>Model: </strong>{{$vehicle->model}}</p>
-                    <p><strong>Chasis No: </strong>{{$vehicle->chasis_no}}</p>
-                    <p><strong>Mileage In: </strong>{{$estimate->mileage_in}}</p>
+                    <div class="col-sm-4"><p><strong>Registration No: </strong></p></div><div class="col-sm-8"><p>{{$vehicle->reg_no}}</p></div>
+                    <div class="col-sm-4"><p><strong>Make: </strong></p></div><div class="col-sm-8"><p>{{$vehicle->make}}</p></div>
+                    <div class="col-sm-4"><p><strong>Model: </strong></p></div><div class="col-sm-8"><p>{{$vehicle->model}}</p></div>
                 </div>
             </div>
         </div>
     </div>
+
+    {!! Form::open(array('url' => url('jobs'), 'class'=>'form-horizontal')) !!}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    <div class="form-group">
+                        {!! Form::label('remarks', 'Remarks', ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8 date">
+                            {!! Form::textarea('remark', null, ['class' => 'form-control', 'placeholder' => 'Remarks']) !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    <div class="form-group">
+                        {!! Form::label('service-advisor', 'Service Advisor', ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                        {!! Form::select('advisor', $s_advisor_list ,null , array('class' => 'form-control')) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('section-incharge', 'Secton Incharge', ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::select('section-incharge', $sec_incharge_list ,null , array('class' => 'form-control')) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('promised-dare', 'Promised Date', ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8 date">
+                            {!! Form::text('promised_date', null, ['class' => 'form-control', 'placeholder' => 'Promised Date', 'id' => 'promised-date']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            {!! Form::hidden('estimate_id', $estimate->id, ['class' => 'form-control']) !!}
+                            {!! Form::submit('Create Job', ['class' => 'btn btn-primary btn-block']) !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {!! Form::close() !!}
+
 
 @endsection

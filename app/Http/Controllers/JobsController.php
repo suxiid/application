@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Job;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -12,6 +13,7 @@ use App\Department;
 use App\Stakeholder;
 use DB;
 use App\Vehicle;
+use App\Http\Requests\JobRequest;
 
 class JobsController extends Controller
 {
@@ -40,13 +42,20 @@ class JobsController extends Controller
      */
     public function create_job($est_id)
     {
+        $job = DB::table('jobs')->where('estimate_id', '=', $est_id)->get();
         $estimate = Estimate::findOrFail($est_id);
         $estimate_details = EstimateDetail::where('estimate_id', '=', $est_id)->firstOrFail();
         $department = Department::findOrFail($estimate->department);
-        $s_advisor_list = DB::table('stakeholders')->where('role', '=', 'Service Advisor')->lists('name', 'id');
+        $s_advisor_list = DB::table('stakeholders')->where('role', '=', 's_advisor')->lists('name', 'id');
+        $sec_incharge_list = DB::table('stakeholders')->where('role', '=', 'sec_incharge')->lists('name', 'id');
         $customer = Customer::findOrFail($estimate->customer_id);
         $vehicle = Vehicle::findOrFail($estimate->vehicle_id);
-        return view('jobs.create', compact('estimate', 'estimate_details', 'department', 's_advisor_list', 'customer', 'vehicle'));
+        if($job != null){
+            return view('jobs.single-job', compact('job', 'estimate', 'estimate_details', 'department', 's_advisor_list', 'customer', 'vehicle', 'sec_incharge_list'));
+        }else{
+            return view('jobs.create', compact('estimate', 's_advisor_list', 'customer', 'vehicle', 'sec_incharge_list'));
+        }
+
     }
 
     /**
@@ -65,9 +74,22 @@ class JobsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JobRequest $request)
     {
-        //
+        $input = $request->all();
+        $user_id = '1';
+        $job = new Job();
+        $job->estimate_id = $input['estimate_id'];
+        $job->promised_date = $input['promised_date'];
+        $job->section_incharge = $input['section-incharge'];
+        $job->s_adviser = $input['advisor'];
+        $job->remarks = $input['remark'];
+        $job->status = 'open';
+        $job->created_by = $user_id;
+        $job->save($request->all());
+
+        return redirect('/jobs');
+
     }
 
     /**

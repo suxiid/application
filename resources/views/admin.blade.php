@@ -32,6 +32,7 @@
     <!-- Custom Fonts -->
     <link href="{{url('bower_components/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 
+    <link href="{{url('css/bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -91,6 +92,8 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{{url('dist/js/sb-admin-2.js')}}"></script>
+
+    <script src="{{url('js/bootstrap-datepicker.min.js')}}"></script>
     
     <!-- Custom Theme JavaScript -->
     <script src="{{url('js/functions.js')}}"></script>

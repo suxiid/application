@@ -28,4 +28,8 @@ class Estimate extends Model
         return $this->hasMany('App\EstimateDetail');
     }
 
+   /* public function job(){
+        return $this->belongsTo('App\Job');
+    }*/
+
 }

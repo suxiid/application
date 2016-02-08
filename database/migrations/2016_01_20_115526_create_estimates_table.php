@@ -20,6 +20,7 @@ class CreateEstimatesTable extends Migration
             $table->integer('net_amount');
             $table->integer('parent_estimate_id')->unsigned();
             $table->integer('department')->unsigned();
+            $table->string('job_id');
             $table->integer('created_by')->unsigned();
             $table->timestamps();
             

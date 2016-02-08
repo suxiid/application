@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\EstimateDetail;
+use App\Job;
 use App\User;
 use App\Vehicle;
 use Illuminate\Http\Request;
@@ -34,11 +35,12 @@ class EstimatesController extends Controller
      */
     public function index()
     {
-       $estimates = Estimate::all();
+       $estimates = Estimate::orderBy('id','DESC')->get();
        $customers = Customer::all();
        $vehicles = Vehicle::all();
        $departments = Department::all();
         $users = User::all();
+
        return view('estimates.estimates', compact('estimates', 'customers', 'vehicles', 'departments', 'users'));
     }
 
