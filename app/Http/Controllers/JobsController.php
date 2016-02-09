@@ -32,7 +32,15 @@ class JobsController extends Controller
      */
     public function index()
     {
-        return view('jobs.jobs');
+        $jobs = DB::table('jobs')
+            ->join('estimates', 'estimates.id', '=', 'jobs.estimate_id')
+            ->join('customers', 'customers.id', '=', 'estimates.customer_id')
+            ->join('vehicles', 'vehicles.id', '=', 'estimates.vehicle_id')
+            ->join('stakeholders', 'stakeholders.id', '=', 'jobs.s_adviser')
+            ->selectRaw('jobs.*, jobs.id as job_id, customers.*, customers.name as cname, vehicles.*, stakeholders.*, stakeholders.name as sname')
+            ->orderBy('jobs.id','DESC')->get();
+        //var_dump($jobs); die;
+        return view('jobs.jobs', compact('jobs'));
     }
 
     /**
@@ -44,7 +52,7 @@ class JobsController extends Controller
     {
         $job = DB::table('jobs')->where('estimate_id', '=', $est_id)->get();
         $estimate = Estimate::findOrFail($est_id);
-        $estimate_details = EstimateDetail::where('estimate_id', '=', $est_id)->firstOrFail();
+        $estimate_details = DB::table('estimate_details')->where('estimate_id', '=', $est_id)->get();
         $department = Department::findOrFail($estimate->department);
         $s_advisor_list = DB::table('stakeholders')->where('role', '=', 's_advisor')->lists('name', 'id');
         $sec_incharge_list = DB::table('stakeholders')->where('role', '=', 'sec_incharge')->lists('name', 'id');
@@ -65,7 +73,7 @@ class JobsController extends Controller
      */
     public function create()
     {
-        return view('jobs.create');
+        //
     }
 
     /**
@@ -100,7 +108,17 @@ class JobsController extends Controller
      */
     public function show($id)
     {
-        return view('jobs.single-job');
+        $job = Job::findOrFail($id);
+        //var_dump($job); die;
+        $estimate = Estimate::findOrFail($job->estimate_id);
+        $estimate_details = DB::table('estimate_details')->where('estimate_id', '=', $job->estimate_id)->get();
+        $department = Department::findOrFail($estimate->department);
+        $s_advisor_list = DB::table('stakeholders')->where('role', '=', 's_advisor')->lists('name', 'id');
+        $sec_incharge_list = DB::table('stakeholders')->where('role', '=', 'sec_incharge')->lists('name', 'id');
+        $customer = Customer::findOrFail($estimate->customer_id);
+        $vehicle = Vehicle::findOrFail($estimate->vehicle_id);
+
+        return view('jobs.single-job', compact('job', 'estimate', 'estimate_details', 'department', 's_advisor_list', 'customer', 'vehicle', 'sec_incharge_list'));
     }
 
     /**

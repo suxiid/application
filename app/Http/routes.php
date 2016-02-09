@@ -62,6 +62,8 @@ Route::resource('vehicles', 'VehiclesController');
 
 Route::resource('suppliers', 'SuppliersController');
 
+Route::resource('orders', 'OrdersController');
+
 /*
  *
  * All Routes for Jobs Module

@@ -28,7 +28,7 @@ class CreateTableJobs extends Migration
             $table->foreign('s_adviser')->references('id')->on('stakeholders');
             $table->foreign('tested_by')->references('id')->on('stakeholders');
             $table->foreign('section_incharge')->references('id')->on('stakeholders');
-            $table->foreign('created_by')->references('id')->on('stakeholders');
+            $table->foreign('created_by')->references('id')->on('users');
         });
     }
 

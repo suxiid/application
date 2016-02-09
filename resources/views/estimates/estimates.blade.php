@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-lg-2">
-            <h3 class="page-header">Items</h3>
+            <h3 class="page-header">Estimates</h3>
         </div>
         <div class="col-lg-10">
         <a href="{{url('estimates/create')}}" type="button" class="page-header btn btn-primary">New Estimate</a>

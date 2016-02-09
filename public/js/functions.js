@@ -109,6 +109,7 @@ function calcTotal() {
 $(function () {
     $('#promised-date').datepicker({
         viewMode: 'years',
+        format: "yyyy/mm/dd",
         autoclose: true,
         todayHighlight: true
     });
