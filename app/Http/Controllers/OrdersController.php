@@ -42,7 +42,9 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        //
+        $suppliers = Supplier::lists('name', 'id')->all();
+        $items = Item::lists('name', 'id')->all();
+        return view('orders.create', compact('suppliers', 'items'));
     }
 
     /**

@@ -1,10 +1,10 @@
 @extends('admin')
 @section('content')
     <div class="row">
-        <div class="col-lg-2">
+        <div class="col-lg-3">
             <h3 class="page-header">Purchase Orders</h3>
         </div>
-        <div class="col-lg-10">
+        <div class="col-lg-9">
             <a href="{{url('orders/create')}}" type="button" class="page-header btn btn-primary">New Order</a>
         </div>
         <!-- /.col-lg-12 -->
