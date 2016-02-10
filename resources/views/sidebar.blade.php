@@ -22,7 +22,7 @@
                             <a href="{{url('items')}}"><i class="fa fa-cogs fa-fw"></i> Items</a>
                         </li>
 			            <li>
-                            <a href="{{url('/#')}}"><i class="fa fa-file-text-o fa-fw"></i> Purchase Orders</a>
+                            <a href="{{url('orders')}}"><i class="fa fa-file-text-o fa-fw"></i> Purchase Orders</a>
                         </li>
 						<li>
                             <a href="{{url('/#')}}"><i class="fa fa-refresh fa-fw"></i> GRN</a>

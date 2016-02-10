@@ -5,9 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Order;
+use App\User;
+use App\Item;
+use App\OrderDetail;
+use App\Supplier;
+
 
 class OrdersController extends Controller
 {
+    /**
+     * Instantiate a new UserController instance.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +29,10 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::orderBy('id','DESC')->get();
+        $suppliers = Supplier::all();
+
+        return view('orders.orders', compact('orders', 'suppliers'));
     }
 
     /**
