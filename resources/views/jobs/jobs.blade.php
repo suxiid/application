@@ -6,8 +6,8 @@
             <h3 class="page-header">Jobs</h3>
         </div>
         <div class="col-lg-10">
-            <a href="{{url('items/create')}}" type="button" class="page-header btn btn-primary">Estimates</a>
-            <a href="{{url('items/create')}}" type="button" class="page-header btn btn-primary">New Estimate</a>
+            <a href="{{url('estimates')}}" type="button" class="page-header btn btn-primary">Estimates</a>
+            <a href="{{url('estimates/create')}}" type="button" class="page-header btn btn-primary">New Estimate</a>
         </div>
         <!-- /.col-lg-12 -->
     </div>

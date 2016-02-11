@@ -25,7 +25,7 @@
                             <a href="{{url('orders')}}"><i class="fa fa-file-text-o fa-fw"></i> Purchase Orders</a>
                         </li>
 						<li>
-                            <a href="{{url('/#')}}"><i class="fa fa-refresh fa-fw"></i> GRN</a>
+                            <a href="{{url('grn')}}"><i class="fa fa-refresh fa-fw"></i> GRN</a>
                         </li>
 						<li>
                             <a href="{{url('/#')}}"><i class="fa fa-check-square-o fa-fw"></i> Issue Notes</a>

@@ -2,10 +2,10 @@
 @section('content')
     <div class="row">
         <div class="col-lg-3">
-            <h3 class="page-header">Purchase Orders</h3>
+            <h3 class="page-header">GRN</h3>
         </div>
         <div class="col-lg-9">
-            <a href="{{url('orders/create')}}" type="button" class="page-header btn btn-primary">New Order</a>
+            <a href="{{url('orders/create')}}" type="button" class="page-header btn btn-primary">New Purchase Order</a>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -23,6 +23,7 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables-function">
                             <thead>
                             <tr>
+                                <th>GRN #</th>
                                 <th>Order #</th>
                                 <th>Supplier</th>
                                 <th>Order Date</th>
@@ -31,12 +32,18 @@
                             </thead>
                             <tbody>
 
-                            @foreach($orders as $order)
+                            @foreach($grns as $grn)
                                 <tr class="odd gradeX">
-                                    <td>{{$order->id}}</td>
-                                    <td>{{$order->sname}}</td>
-                                    <td>{{$order->created_at}}</td>
-                                    <td class="text-center actions"><a href="{{url('orders/'.$order->id)}}" title="View"><i class="fa fa-newspaper-o"></i></a><a href="{{url('orders/'.$order->id)}}" title="View" class="text-bold">GRN</a><a href="{{url('orders/'.$order->id.'/edit')}}" title="Edit"><i class="fa fa-pencil-square-o"></i></a><a href="#" title="Delete"><i class="fa fa-trash-o fa-fw"></i></a></td>
+                                    <td>{{$grn->grn_id}}</td>
+                                    <td>{{$grn->order_id}}</td>
+                                    <td>{{$grn->sname}}</td>
+                                    <td>{{$grn->date}}</td>
+                                    <td class="text-center actions">
+                                        <a href="{{url('orders/'.$order->id)}}" title="View"><i class="fa fa-newspaper-o"></i></a>
+                                        <a href="{{url('orders/'.$order->id)}}" title="View" class="text-bold">GRN</a>
+                                        <a href="{{url('orders/'.$order->id.'/edit')}}" title="Edit"><i class="fa fa-pencil-square-o"></i></a>
+                                        <a href="#" title="Delete"><i class="fa fa-trash-o fa-fw"></i></a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

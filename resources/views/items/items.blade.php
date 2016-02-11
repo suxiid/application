@@ -24,6 +24,7 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTables-function">
                             <thead>
                                 <tr>
+                                    <th>Item Code</th>
                                     <th>Item Name</th>
                                     <th>Type</th>
                                     <th>Category</th>
@@ -36,6 +37,7 @@
                             <tbody>
                                 @foreach($items as $item)
                                 <tr class="odd gradeX">
+                                    <td>#Item00{{$item->id}}</td>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->type}}</td>
                                     <td>@if($item->category_id)

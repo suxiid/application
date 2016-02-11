@@ -5,19 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Vehicle;
-use App\Http\Requests\VehicleRequest;
+use App\Grn;
+use App\GrnDetail;
+use DB;
 
-class VehiclesController extends Controller
+class GrnController extends Controller
 {
-    /**
-     * Instantiate a new UserController instance.
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +18,12 @@ class VehiclesController extends Controller
      */
     public function index()
     {
-        //
+        $grns = DB::table('grns')
+            ->join('orders', 'orders.id', '=', 'grns.order_id')
+            ->join('suppliers', 'suppliers.id', '=', 'orders.supplier_id')
+            ->selectRaw('grns.*, grns.id as grn_id, orders.*, orders.created_at as date, suppliers.*, suppliers.name as sname')
+            ->orderBy('grns.id','DESC')->get();
+        return view('grns.grns', compact('grns'));
     }
 
     /**
@@ -44,21 +42,9 @@ class VehiclesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(VehicleRequest $request)
+    public function store(Request $request)
     {
-        $input = $request->all();
-        $user_id = '1';
-        $vehicle = new Vehicle();
-        $vehicle->customer_id = $input['customer_id'];
-        $vehicle->reg_no = $input['reg_no'];
-        $vehicle->make = $input['make'];
-        $vehicle->model = $input['model'];
-        $vehicle->chasis_no = $input['chasis_no'];
-        $vehicle->next_service = $input['next_service'];
-        $vehicle->created_by = $user_id;
-        $vehicle->save($request->all());
-
-        return redirect('/estimates/create');
+        //
     }
 
     /**
@@ -80,8 +66,7 @@ class VehiclesController extends Controller
      */
     public function edit($id)
     {
-        $vehicle = Vehicle::findOrFail($id);
-        return view('vehicles.edit', compact('vehicle'));
+        //
     }
 
     /**

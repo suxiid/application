@@ -6,9 +6,8 @@
             <h3 class="page-header">Job Details</h3>
         </div>
         <div class="col-lg-9">
-            <a href="{{url('jobs/create_job/'.$estimate->id)}}" type="button" class="page-header btn btn-primary"><i class="fa fa-briefcase fa-fw"></i> Create Job</a>
-            <a href="" type="button" class="page-header btn btn-primary"><i class="fa fa-pencil-square-o"></i> Edit Estimate</a>
-            <a href="{{url('estimates')}}" type="button" class="page-header btn btn-primary"><i class="fa fa-file-text-o"></i> All Estimates</a>
+            <a href="" type="button" class="page-header btn btn-primary"><i class="fa fa-pencil-square-o"></i> Edit Job</a>
+            <a href="{{url('estimates')}}" type="button" class="page-header btn btn-primary"><i class="fa fa-file-text-o"></i> All Jobs</a>
         </div>
         <!-- /.col-lg-12 -->
     </div>

@@ -10,6 +10,8 @@ use App\User;
 use App\Item;
 use App\OrderDetail;
 use App\Supplier;
+use App\Http\Requests\OrderRequest;
+use DB;
 
 
 class OrdersController extends Controller
@@ -29,10 +31,15 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = Order::orderBy('id','DESC')->get();
-        $suppliers = Supplier::all();
+        /*$orders = Order::orderBy('id','DESC')->get();
+        $suppliers = Supplier::all();*/
 
-        return view('orders.orders', compact('orders', 'suppliers'));
+        $orders = DB::table('orders')
+            ->join('suppliers', 'suppliers.id', '=', 'orders.supplier_id')
+            ->selectRaw('orders.*, suppliers.name as sname')
+            ->orderBy('orders.id','DESC')->get();
+
+        return view('orders.orders', compact('orders'));
     }
 
     /**
@@ -53,9 +60,30 @@ class OrdersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OrderRequest $request)
     {
-        //
+        $user_id = '1';
+
+        $input = $request->all();
+
+        $order = new Order();
+        $order->supplier_id = $input['supplier_id'];
+        $order->created_by = $user_id;
+
+        $order->save($request->all());
+
+        for($i=0;$i<count($input['item_id']);$i++)
+        {
+            $order_detail = new OrderDetail();
+            $order_detail->item_id = $input['item_id'][$i];
+            $order_detail->item_description = $input['item_description'][$i];
+            $order_detail->quantity = $input['quantity'][$i];
+            $order_detail->price = $input['price'][$i];
+
+            $order->order_details()->save($order_detail);
+        }
+
+        return redirect('/orders');
     }
 
     /**
@@ -66,7 +94,11 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::findOrFail($id);
+        $order_details = DB::table('order_details')->where('order_id', '=', $id)->get();
+        $supplier = Supplier::where('id', '=', $order->supplier_id)->firstOrFail();
+        $created_at = $order->created_at->format('Y M d');
+        return view('orders.single-order', compact('order', 'order_details' , 'supplier', 'created_at'));
     }
 
     /**

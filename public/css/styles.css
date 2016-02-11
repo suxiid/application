@@ -46,3 +46,10 @@ form label{
 .estimate-total{
     margin-top: 10px;
 }
+
+.text-bold{
+    font-weight: bold;
+}
+.text-bold:hover{
+    text-decoration: none;
+}

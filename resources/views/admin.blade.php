@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Kentaro - Administration</title>
+    <title>Kentaro - Admin v1.0</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{url('bower_components/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">

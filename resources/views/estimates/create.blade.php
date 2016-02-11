@@ -84,14 +84,14 @@
                         <div class="form-group">
                             {!! Form::label('make', 'Make', ['class' => 'col-sm-4 control-label']) !!}
                             <div class="col-sm-8">
-                            {!! Form::text('make', null, ['class' => 'form-control', 'placeholder' => 'ex: TOYOTA PRIUS']) !!}
+                            {!! Form::text('make', null, ['class' => 'form-control', 'placeholder' => 'ex: TOYOTA']) !!}
                             </div>
                         </div>
                     
                         <div class="form-group">
                             {!! Form::label('model', 'Model', ['class' => 'col-sm-4 control-label']) !!}
                             <div class="col-sm-8">
-                            {!! Form::text('model', null, ['class' => 'form-control', 'placeholder' => 'ex: 2016']) !!}
+                            {!! Form::text('model', null, ['class' => 'form-control', 'placeholder' => 'ex: CROWN']) !!}
                             </div>
                         </div>
                         </div>
@@ -187,13 +187,19 @@
                     <div class="form-group">
                         {!! Form::label('make', 'Make', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-8">
-                            {!! Form::text('make', null, ['class' => 'form-control', 'placeholder' => 'ex: TOYOTA PRIUS']) !!}
+                            {!! Form::text('make', null, ['class' => 'form-control', 'placeholder' => 'ex: TOYOTA']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('model', 'Model', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-8">
-                            {!! Form::text('model', null, ['class' => 'form-control', 'placeholder' => 'ex: 2015']) !!}
+                            {!! Form::text('model', null, ['class' => 'form-control', 'placeholder' => 'ex: CROWN']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('year', 'Year', ['class' => 'col-sm-4 control-label']) !!}
+                        <div class="col-sm-8">
+                            {!! Form::text('year', null, ['class' => 'form-control', 'placeholder' => 'ex: 2015']) !!}
                         </div>
                     </div>
                     <div class="form-group">

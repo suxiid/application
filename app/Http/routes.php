@@ -64,9 +64,18 @@ Route::resource('suppliers', 'SuppliersController');
 
 Route::resource('orders', 'OrdersController');
 
+
 /*
  *
  * All Routes for Jobs Module
  */
 Route::resource('jobs', 'JobsController');
 Route::get('jobs/create_job/{id}', 'JobsController@create_job');
+
+
+/*
+ *
+ * All Routes for GRN Module
+ */
+Route::resource('grn', 'GrnController');
+Route::get('grn/create_grn/{id}', 'GrnController@create_grn');
