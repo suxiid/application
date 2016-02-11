@@ -110,7 +110,7 @@
                                     <td>Reg No: {{$vehicle->reg_no}}</td>
                                     <td>Make: {{$vehicle->make}}</td>
                                     <td>Model: {{$vehicle->model}}</td>
-                                    <td><a href="vehicles/{{$vehicle->id}}/edit"></a></td>
+                                    <td><a href="{{url('vehicles/'.$vehicle->id.'/edit')}}"><i class="fa fa-pencil-square-o"></i></a></td>
                                 </tr>
                                 @endforeach
                                 </tbody>

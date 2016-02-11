@@ -77,7 +77,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="dataTable_wrapper">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-function">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-function2">
                                     <thead>
                                     <tr>
                                         <th>#</th>
@@ -124,7 +124,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="dataTable_wrapper">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-function">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-function3">
                                     <thead>
                                     <tr>
                                         <th>#</th>

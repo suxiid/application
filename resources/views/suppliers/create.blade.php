@@ -2,10 +2,10 @@
 @section('content')
     <div class="row">
         <div class="col-lg-3">
-            <h3 class="page-header">Add New Customer</h3>
+            <h3 class="page-header">Add New Supplier</h3>
         </div>
         <div class="col-lg-9">
-            <a href="{{url('customers')}}" type="button" class="page-header btn btn-primary">All Customers</a>
+            <a href="{{url('suppliers')}}" type="button" class="page-header btn btn-primary">All Suppliers</a>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -15,7 +15,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Item Data Form
+                    Supplier Data Form
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -34,11 +34,11 @@
                     </div>
                 @endif
 
-                    {!! Form::open(array('url' => url('customers'), 'class'=>'form-horizontal')) !!}
+                {!! Form::open(array('url' => url('suppliers'), 'class'=>'form-horizontal')) !!}
                 <div class="row">
                     <div class="col-lg-6">
                     <div class="form-group">
-                        {!! Form::label('name', 'Customer Name', ['class' => 'col-sm-4 control-label']) !!}
+                        {!! Form::label('name', 'Supplier Name', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-8">
                             {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
                         </div>
@@ -116,13 +116,6 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('credit_limit', 'Credit Limit', ['class' => 'col-sm-4 control-label']) !!}
-                        <div class="col-sm-8">
-                            {!! Form::text('credit_limit', null, ['class' => 'form-control', 'placeholder' => 'Credit Limit']) !!}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         {!! Form::label('account_sys_id', 'Account System ID', ['class' => 'col-sm-4 control-label']) !!}
                         <div class="col-sm-8">
                             {!! Form::text('account_sys_id', null, ['class' => 'form-control', 'placeholder' => 'Account System ID']) !!}
@@ -131,7 +124,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-6">
-                            {!! Form::submit('Save Customer', ['class' => 'btn btn-primary']) !!}
+                            {!! Form::submit('Save Supplier', ['class' => 'btn btn-primary']) !!}
                             {!! Form::reset('Reset Form', ['class' => 'btn btn-default']) !!}
                         </div>
                     </div>

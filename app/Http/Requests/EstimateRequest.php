@@ -49,13 +49,10 @@ class EstimateRequest extends Request
             {
                 return [
                     'customer_id' => 'required',
-                    'vehicle_id' => 'required_without_all:reg_no,make,model',
-                    'reg_no' => 'required_without_all:vehicle_id,make,model',
-                    'make' => 'required_without_all:vehicle_id,reg_no,model',
-                    'model' => 'required_without_all:vehicle_id,reg_no,make',
-                    'item_id[]' => 'required',
+                    'vehicle_id' => 'required',
+                    /*'item_id[]' => 'required',
                     'units[]' => 'required|numeric',
-                    'rate[]' => 'required|numeric',
+                    'rate[]' => 'required|numeric',*/
                 ];
             }
             default:break;

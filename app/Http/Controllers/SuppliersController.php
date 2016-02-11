@@ -6,6 +6,7 @@ use App\Supplier;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SupplierRequest;
 
 class SuppliersController extends Controller
 {
@@ -33,7 +34,7 @@ class SuppliersController extends Controller
      */
     public function create()
     {
-        //
+        return view('suppliers.create', compact(''));
     }
 
     /**
@@ -42,9 +43,27 @@ class SuppliersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SupplierRequest $request)
     {
-        //
+        $input = $request->all();
+        $user_id = '1';
+        $customer = new Supplier();
+        $customer->name = $input['name'];
+        $customer->address1 = $input['address1'];
+        $customer->address2 = $input['address2'];
+        $customer->city = $input['city'];
+        $customer->telephone = $input['telephone'];
+        $customer->mobile = $input['mobile'];
+        $customer->email = $input['email'];
+        $customer->fax = $input['fax'];
+        $customer->website = $input['website'];
+        $customer->vat_no = $input['vat_no'];
+        $customer->contact_person = $input['contact_person'];
+        $customer->account_sys_id = $input['account_sys_id'];
+        $customer->created_by = $user_id;
+        $customer->save($request->all());
+
+        return redirect('/suppliers');
     }
 
     /**
@@ -55,7 +74,8 @@ class SuppliersController extends Controller
      */
     public function show($id)
     {
-        //
+        $supplier = Supplier::findOrFail($id);
+        return view('suppliers.single-supplier', compact('supplier'));
     }
 
     /**
@@ -66,7 +86,8 @@ class SuppliersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $supplier = Supplier::findOrFail($id);
+        return view('suppliers.edit', compact('supplier'));
     }
 
     /**
@@ -78,7 +99,9 @@ class SuppliersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $supplier = Supplier::findOrFail($id);
+        $supplier->update($request->all());
+        return redirect('suppliers/'.$id);
     }
 
     /**

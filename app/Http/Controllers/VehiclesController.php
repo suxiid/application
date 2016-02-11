@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Vehicle;
 use App\Http\Requests\VehicleRequest;
+use DB;
 
 class VehiclesController extends Controller
 {
@@ -25,7 +26,11 @@ class VehiclesController extends Controller
      */
     public function index()
     {
-        //
+        $vehicles = DB::table('vehicles')
+            ->join('customers', 'customers.id', '=', 'vehicles.customer_id')
+            ->selectRaw('vehicles.*, vehicles.id as vid, customers.name as cname')
+            ->get();
+        return view('vehicles.vehicles', compact('vehicles'));
     }
 
     /**
@@ -53,6 +58,7 @@ class VehiclesController extends Controller
         $vehicle->reg_no = $input['reg_no'];
         $vehicle->make = $input['make'];
         $vehicle->model = $input['model'];
+        $vehicle->year = $input['year'];
         $vehicle->chasis_no = $input['chasis_no'];
         $vehicle->next_service = $input['next_service'];
         $vehicle->created_by = $user_id;
@@ -69,7 +75,8 @@ class VehiclesController extends Controller
      */
     public function show($id)
     {
-        //
+        $vehicle = Vehicle::findOrFail($id);
+        return view('vehicles.single-vehicle', compact('vehicle'));
     }
 
     /**
@@ -91,9 +98,11 @@ class VehiclesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(VehicleRequest $request, $id)
     {
-        //
+        $vehicle = Vehicle::findOrFail($id);
+        $vehicle->update($request->all());
+        return redirect('vehicles');
     }
 
     /**

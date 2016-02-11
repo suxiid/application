@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class VehicleRequest extends Request
+class SupplierRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -33,15 +33,18 @@ class VehicleRequest extends Request
             case 'POST':
             {
                 return [
-                    'customer_id' => 'required',
-                    'reg_no' => 'required|unique:vehicles'
+                    'name' => 'required|unique:items',
+                    'address1' => 'required',
+                    'email' => 'email',
                 ];
             }
             case 'PUT':
             case 'PATCH':
             {
                 return [
-                    'reg_no' => 'required'
+                    'name' => 'required',
+                    'address1' => 'required',
+                    'email' => 'email',
                 ];
             }
             default:break;

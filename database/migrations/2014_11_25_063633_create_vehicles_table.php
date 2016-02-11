@@ -18,13 +18,14 @@ class CreateVehiclesTable extends Migration
             $table->string('reg_no');
             $table->string('make');
             $table->string('model');
+            $table->integer('year');
             $table->string('chasis_no');
             $table->string('next_service');
             $table->integer('created_by')->unsigned();
             $table->timestamps();
 
-            //$table->foreign('customer_id')->references('id')->on('customers');
-            //$table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('created_by')->references('id')->on('users');
         });
     }
 

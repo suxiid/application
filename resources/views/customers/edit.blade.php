@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-3">
-            <h3 class="page-header">Add New Customer</h3>
+            <h3 class="page-header">Edit Customer</h3>
         </div>
         <div class="col-lg-9">
             <a href="{{url('customers')}}" type="button" class="page-header btn btn-primary">All Customers</a>
@@ -132,7 +132,7 @@
 
                             <div class="form-group">
                                 <div class="col-sm-offset-4 col-sm-6">
-                                    {!! Form::submit('Save Item', ['class' => 'btn btn-primary']) !!}
+                                    {!! Form::submit('Update Customer', ['class' => 'btn btn-primary']) !!}
                                     {!! Form::reset('Reset Form', ['class' => 'btn btn-default']) !!}
                                 </div>
                             </div>

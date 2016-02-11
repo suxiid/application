@@ -235,7 +235,13 @@ class EstimatesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $estimate = Estimate::findOrFail($id);
+        $vehicles = Vehicle::lists('reg_no', 'id')->all();
+        $customer_list = Customer::lists('name', 'id')->all();
+        $departments = Department::lists('name', 'id');
+        $items = Item::lists('name', 'id')->all();
+        $estimate_details = DB::table('estimate_details')->where('estimate_id', '=', $id)->get();
+        return view('estimates.edit', compact('estimate', 'vehicles', 'estimate_details', 'customer_list', 'departments', 'items'));
     }
 
     /**

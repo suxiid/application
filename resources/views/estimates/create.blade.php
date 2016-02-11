@@ -103,7 +103,7 @@
                                     <thead>
                                             <th>Item</th>
                                             <th>Description</th>
-                                            <th>Units</th>
+                                            <th>Number</th>
                                             <th>Rate</th>
                                             <th>Amount</th>
                                             <th class="text-center">Actions</th>
@@ -117,7 +117,7 @@
                                                 {!! Form::text('item_description[]', null, ['class' => 'form-control item_description', 'id' => 'item_description', 'placeholder' => 'Not Required | Optional']) !!}
                                             </td>
                                             <td>
-                                                {!! Form::text('units[]', null, ['class' => 'form-control', 'placeholder' => 'Add Units', 'id' => 'units', 'required']) !!}
+                                                {!! Form::text('units[]', null, ['class' => 'form-control', 'placeholder' => 'Add Number', 'id' => 'units', 'required']) !!}
                                             </td>
                                             <td>
                                                 {!! Form::text('rate[]', null, ['class' => 'form-control', 'placeholder' => 'Add Rate', 'id' => 'rate', 'required']) !!}
@@ -136,9 +136,9 @@
                             <div class="col-lg-1">
                                 <button class="btn btn-primary" type="button" onclick="addTableRow($('#dynamic-tbl'));" class="addRow" id="addRow">add row</button>
                             </div>
-                            <div class="col-lg-2">
-                                <!--<button class="btn btn-info" type="button" onclick="calcTotal($('#dynamic-tbl'));" class="addRow" id="addRow">Calculate Total</button>-->
+                            <div class="col-lg-4">
                                 {!! Form::submit('Save Estimate', ['class' => 'btn btn-success']) !!}
+                                <button class="btn btn-default" type="button" onclick="calcTotal($('#dynamic-tbl'));" class="addRow" id="addRow">Calculate Total</button>
                             </div>
 
                             <div class="col-lg-1 text-right">
@@ -147,7 +147,7 @@
                             <div class="col-lg-2">
                                 {!! Form::text('net_amount', null, ['class' => 'form-control text-right total', 'id' => 'total', 'readonly']) !!}
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-2">
 
                             </div>
                             <div class="col-lg-1">

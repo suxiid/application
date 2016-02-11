@@ -5,11 +5,29 @@
             <h3 class="page-header">Create Job</h3>
         </div><!-- /.col-lg-3 -->
         <div class="col-lg-9">
-            <a href="{{url('estimates')}}" type="button" class="page-header btn btn-primary"><i class="fa fa-briefcase fa-fw"></i> All Jobs</a>
+            <a href="{{url('jobs')}}" type="button" class="page-header btn btn-primary"><i class="fa fa-briefcase fa-fw"></i> All Jobs</a>
         </div>
         <!-- /.col-lg-3 -->
     </div>
     <!-- /.row -->
+
+    <div class="row">
+        <div class="col-lg-12">
+            @if($errors->any())
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8 alert alert-danger">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-6">

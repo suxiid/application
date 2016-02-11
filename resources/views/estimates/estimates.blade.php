@@ -21,7 +21,7 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="dataTable_wrapper">
-                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-function">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -71,7 +71,7 @@
                                     <td class="text-center actions">
                                         <a href="{{url('estimates/'.$estimate->id)}}" title="view"><i class="fa fa-newspaper-o"></i></a>
                                         <a href="{{url('jobs/create_job/'.$estimate->id)}}" title="Job"><i class="fa fa-briefcase fa-fw"></i></a>
-                                        <a title="Edit" href="{{url('items/'.$estimate->id.'/edit')}}"><i class="fa fa-pencil-square-o"></i></a>
+                                        <a title="Edit" href="{{url('estimates/'.$estimate->id.'/edit')}}"><i class="fa fa-pencil-square-o"></i></a>
                                         <a title="Delete" href="#"><i class="fa fa-trash-o fa-fw"></i></a>
                                     </td>
                                 </tr> 

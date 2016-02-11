@@ -11,6 +11,24 @@ $(document).ready(function() {
                 responsive: true
         });
 });
+
+/*
+ * jQuery Data Tables function
+ */
+$(document).ready(function() {
+    $('#dataTables-function2').DataTable({
+        responsive: true
+    });
+});
+
+/*
+ * jQuery Data Tables function
+ */
+$(document).ready(function() {
+    $('#dataTables-function3').DataTable({
+        responsive: true
+    });
+});
  
 /*
  * Add Estimate get vehicle by customer Ajax function
@@ -92,7 +110,21 @@ $("#dynamic-tbl").on('change', 'input[name="units[]"]', function(e){
     });
     $(".total").val(sum);
 });
-/*
+
+$("#dynamic-tbl").on('change', 'input[name="rate[]"]', function(e){
+    var units = e.target.value;
+    var self = this;
+    var rate = $(self).closest('tr').find('input[name="units[]"]').val();
+    var ammount = (units*rate).toFixed(2);
+    $(self).closest('tr').find('input[name="amount[]"]').val(ammount);
+
+    var sum = 0;
+    $(".amount").each(function(){
+        sum += +$(this).val();
+    });
+    $(".total").val(sum);
+});
+
 function calcTotal() {
     var sum = 0;
     $(".amount").each(function(){
@@ -100,7 +132,7 @@ function calcTotal() {
     });
     $(".total").val(sum);
 }
-*/
+
 
 /*
  *

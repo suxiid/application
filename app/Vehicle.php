@@ -13,6 +13,7 @@ class Vehicle extends Model
         'reg_no',
         'make',
         'model',
+        'year',
         'chasis_no',
         'next_service'
     ];

@@ -33,8 +33,9 @@
                         </div>
                     @endif
 
-                        {!! Form::open(array('url' => url('vehicles'), 'class'=>'form-horizontal')) !!}
+                        {!! Form::model($vehicle, ['action' => ['VehiclesController@update', $vehicle->id], 'role' => 'form', 'method' => 'PATCH', 'class'=>'form-horizontal']) !!}
 
+                            <input type="hidden" name="customer_id" value="{{$vehicle->customer_id}}">
                             <div class="form-group">
                                 {!! Form::label('reg_no', 'Registration No', ['class' => 'col-sm-4 control-label']) !!}
                                 <div class="col-sm-8">
@@ -72,8 +73,12 @@
                                 </div>
                             </div>
 
-                            {!! Form::submit('Save Vehicle', ['class' => 'btn btn-primary']) !!}
-
+                            <div class="form-group">
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-8">
+                                {!! Form::submit('Save Vehicle', ['class' => 'btn btn-primary']) !!}
+                                </div>
+                            </div>
                         {!! Form::close() !!}
 
                 </div>
