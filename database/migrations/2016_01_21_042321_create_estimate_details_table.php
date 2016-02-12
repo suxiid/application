@@ -17,10 +17,10 @@ class CreateEstimateDetailsTable extends Migration
             $table->integer('estimate_id')->unsigned();
             $table->integer('item_id')->unsigned();
             $table->string('item_description');
-            $table->integer('units');
-            $table->integer('rate');
-            $table->string('labor_amount_final');
-            $table->integer('initial_amount');
+            $table->decimal('units', 10, 2);
+            $table->decimal('rate', 10, 2);
+            $table->decimal('labor_amount_final', 10, 2);
+            $table->decimal('initial_amount', 10, 2);
             $table->integer('task_status');
             $table->timestamps();
             

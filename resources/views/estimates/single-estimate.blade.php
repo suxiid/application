@@ -7,7 +7,7 @@
         </div>
         <div class="col-lg-9">
             <a href="{{url('jobs/create_job/'.$estimate->id)}}" type="button" class="page-header btn btn-primary"><i class="fa fa-briefcase fa-fw"></i> Create Job</a>
-            <a href="" type="button" class="page-header btn btn-primary"><i class="fa fa-pencil-square-o"></i> Edit Estimate</a>
+            <a href="{{url('estimates/'.$estimate->id.'/edit')}}" type="button" class="page-header btn btn-primary"><i class="fa fa-pencil-square-o"></i> Edit Estimate</a>
             <a href="{{url('estimates')}}" type="button" class="page-header btn btn-primary"><i class="fa fa-file-text-o"></i> All Estimates</a>
         </div>
         <!-- /.col-lg-12 -->
@@ -90,6 +90,10 @@
                     </table>
                 </div>
             </div>
+        </div>
+
+        <div class="alert alert-info">
+            <span class="alert-link">Total: </span>{{$estimate->net_amount}}
         </div>
     </div>
 </div>

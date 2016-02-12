@@ -84,7 +84,7 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">13</div>
-                            <div>Support Tickets!</div>
+                            <div>Invoices!</div>
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
     <hr>
 
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-list-alt fa-fw"></i> Estimates Notifications Panel
@@ -111,8 +111,8 @@
             <div class="panel-body">
                 <div class="list-group">
                     @foreach($estimates as $estimate)
-                    <a href="#" class="list-group-item">
-                        <i class="fa fa-list-alt fa-fw"></i> {{$estimate->id}} {{$estimate->name}}
+                    <a href="{{url('estimates/'.$estimate->est_id)}}" class="list-group-item">
+                        <i class="fa fa-list-alt fa-fw"></i> Customer: {{$estimate->name}}
                         <span class="pull-right text-muted small"><em>
                                             {{$estimate->created_at}}
                                         </em>
@@ -121,14 +121,14 @@
                     @endforeach
                 </div>
                 <!-- /.list-group -->
-                <a href="#" class="btn btn-default btn-block">View All Estimates</a>
+                <a href="{{url('estimates')}}" class="btn btn-default btn-block">View All Estimates</a>
             </div>
             <!-- /.panel-body -->
         </div>
         <!-- /.panel .chat-panel -->
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-briefcase fa-fw"></i> Jobs Notifications Panel
@@ -136,41 +136,22 @@
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="list-group">
-                    <a href="#" class="list-group-item">
-                        <i class="fa fa-briefcase fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
+                    @foreach($jobs as $job)
+                    <a href="{{url('jobs'.$job->job_id)}}" class="list-group-item">
+                        <i class="fa fa-briefcase fa-fw"></i> {{$job->name}}
+                                    <span class="pull-right text-muted small"><em>{{$job->created_at}}</em>
                                     </span>
                     </a>
+                    @endforeach
                 </div>
                 <!-- /.list-group -->
-                <a href="#" class="btn btn-default btn-block">View All Jobs</a>
+                <a href="{{url('jobs')}}" class="btn btn-default btn-block">View All Jobs</a>
             </div>
             <!-- /.panel-body -->
         </div>
         <!-- /.panel .chat-panel -->
     </div>
 
-    <div class="col-lg-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <i class="fa fa-file-text-o fa-fw"></i> Purchase Orders Notifications Panel
-            </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-                <div class="list-group">
-                    <a href="#" class="list-group-item">
-                        <i class="fa fa-file-text-o fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
-                                    </span>
-                    </a>
-                </div>
-                <!-- /.list-group -->
-                <a href="#" class="btn btn-default btn-block">View All Purchase Orders</a>
-            </div>
-            <!-- /.panel-body -->
-        </div>
-        <!-- /.panel .chat-panel -->
-    </div>
 </div>
 
 

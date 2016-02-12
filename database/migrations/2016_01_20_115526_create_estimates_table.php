@@ -17,7 +17,7 @@ class CreateEstimatesTable extends Migration
             $table->integer('customer_id')->unsigned();
             $table->integer('vehicle_id')->unsigned();
             $table->integer('mileage_in');
-            $table->integer('net_amount');
+            $table->decimal('net_amount', 10, 2);
             $table->integer('parent_estimate_id')->unsigned();
             $table->integer('department')->unsigned();
             $table->string('job_id');

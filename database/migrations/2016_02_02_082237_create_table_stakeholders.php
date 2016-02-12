@@ -16,10 +16,7 @@ class CreateTableStakeholders extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('role');
-            $table->integer('sys_user_id')->unsigned();
             $table->timestamps();
-
-            $table->foreign('sys_user_id')->references('id')->on('users');
         });
     }
 

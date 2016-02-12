@@ -5,18 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Department;
+use App\Stakeholder;
 
-class SettingsController extends Controller
+class StakeholdersController extends Controller
 {
-    /**
-     * Instantiate a new UserController instance.
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -24,35 +16,8 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        return view('settings.settings');
-    }
-
-    /**
-     * View Departments
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function view_departments()
-    {
-        $departments = Department::all();
-        return view('settings.view-departments', compact('departments'));
-    }
-
-    /**
-     * Edit Department
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit_department($id)
-    {
-        $department = Department::findOrFail($id);
-        return view('settings.edit-department', compact('department'));
-    }
-    public function update_department(Request $request, $id)
-    {
-        $department = Department::findOrFail($id);
-        $department->update($request->all());
-        return redirect('settings.view_departments', compact('departments'));
+        $stakeholders = Stakeholder::all();
+        return view('settings.stakeholders.stakeholders', compact('stakeholders'));
     }
 
     /**
@@ -62,7 +27,7 @@ class SettingsController extends Controller
      */
     public function create()
     {
-        //
+        return view('settings.stakeholders.create');
     }
 
     /**
@@ -73,7 +38,13 @@ class SettingsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $stakeholder = new Stakeholder();
+        $stakeholder->name = $input['name'];
+        $stakeholder->role = $input['role'];
+        $stakeholder->save($request->all());
+
+        return redirect('/stakeholders');
     }
 
     /**

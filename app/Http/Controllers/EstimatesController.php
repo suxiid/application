@@ -262,14 +262,16 @@ class EstimatesController extends Controller
 
         for($i=0;$i<count($input['item_id']);$i++)
         {
-            $estimate_detail = new EstimateDetail();
-            $estimate_detail->item_id = $input['item_id'][$i];
-            $estimate_detail->item_description = $input['item_description'][$i];
-            $estimate_detail->units = $input['units'][$i];
-            $estimate_detail->rate = $input['rate'][$i];
-            $estimate_detail->initial_amount = $input['amount'][$i];
+            if($input['item_id'][$i] != null) {
+                $estimate_detail = new EstimateDetail();
+                $estimate_detail->item_id = $input['item_id'][$i];
+                $estimate_detail->item_description = $input['item_description'][$i];
+                $estimate_detail->units = $input['units'][$i];
+                $estimate_detail->rate = $input['rate'][$i];
+                $estimate_detail->initial_amount = $input['amount'][$i];
 
-            $estimate->estimate_details()->save($estimate_detail);
+                $estimate->estimate_details()->save($estimate_detail);
+            }
         }
         return redirect('estimates');
     }

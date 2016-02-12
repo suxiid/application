@@ -28,7 +28,7 @@
                                     <th>Customer</th>
                                     <th>Vehicle</th>
                                     <th>Department</th>
-                                    <th>Net Amount</th>    
+                                    <th>Net Total</th>
                                     <th>Date</th>
                                     <th class="text-center">Actions</th>
                                 </tr>

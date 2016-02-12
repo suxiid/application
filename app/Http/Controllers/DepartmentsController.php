@@ -7,16 +7,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Department;
 
-class SettingsController extends Controller
+class DepartmentsController extends Controller
 {
-    /**
-     * Instantiate a new UserController instance.
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -24,35 +16,8 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        return view('settings.settings');
-    }
-
-    /**
-     * View Departments
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function view_departments()
-    {
         $departments = Department::all();
-        return view('settings.view-departments', compact('departments'));
-    }
-
-    /**
-     * Edit Department
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit_department($id)
-    {
-        $department = Department::findOrFail($id);
-        return view('settings.edit-department', compact('department'));
-    }
-    public function update_department(Request $request, $id)
-    {
-        $department = Department::findOrFail($id);
-        $department->update($request->all());
-        return redirect('settings.view_departments', compact('departments'));
+        return view('settings.departments.view-departments', compact('departments'));
     }
 
     /**
@@ -62,7 +27,7 @@ class SettingsController extends Controller
      */
     public function create()
     {
-        //
+        return view('settings.departments.create');
     }
 
     /**
@@ -73,7 +38,12 @@ class SettingsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $department = new Department();
+        $department->name = $input['name'];
+        $department->save($request->all());
+
+        return redirect('/departments');
     }
 
     /**
@@ -95,7 +65,8 @@ class SettingsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $department = Department::findOrFail($id);
+        return view('settings.departments.edit-department', compact('department'));
     }
 
     /**
@@ -107,7 +78,9 @@ class SettingsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $department = Department::findOrFail($id);
+        $department->update($request->all());
+        return redirect('departments');
     }
 
     /**
