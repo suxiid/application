@@ -12,7 +12,10 @@
 */
 
 Route::get('/', ['middleware' => 'auth', function () {
-    return view('dashboard');
+    $estimates = DB::table('estimates')
+            ->join('customers', 'customers.id', '=', 'estimates.customer_id')
+            ->orderBy('id', 'desc')->take(5)->get();
+    return view('dashboard', compact('estimates'));
 }]);
 
 Route::get('/home', ['middleware' => 'auth', function () {
@@ -79,3 +82,10 @@ Route::get('jobs/create_job/{id}', 'JobsController@create_job');
  */
 Route::resource('grn', 'GrnController');
 Route::get('grn/create_grn/{id}', 'GrnController@create_grn');
+
+
+/*
+ *
+ * Route for settings main page
+ */
+Route::get('settings', 'SettingsController@index');

@@ -32,7 +32,7 @@
                         </div>
                     @endif
 
-                    {!! Form::model($estimate, $vehicles, $customer_list, $departments, $items,['action' => ['EstimatesController@update', $estimate->id], 'role' => 'form', 'method' => 'PATCH', 'class'=>'form-horizontal']) !!}
+                    {!! Form::model($estimate, ['action' => ['EstimatesController@update', $estimate->id], 'role' => 'form', 'method' => 'PATCH', 'class'=>'form-horizontal']) !!}
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -84,23 +84,41 @@
                                     @foreach($estimate_details as $detail)
                                     <tr id="1">
                                         <td>
-                                            {!! Form::select('item_id[]', ['' => 'Select an item'] + $items, null, array('class' => 'form-control itemId', 'id' => 'itemId', 'required')) !!}
+                                            {!! Form::select('item_id[]', ['' => 'Select an item'] + $items, $detail->item_id, array('class' => 'form-control itemId', 'id' => 'itemId', 'required')) !!}
+                                        </td>
+                                        <td>
+                                            {!! Form::text('item_description[]', $detail->item_description, ['class' => 'form-control item_description', 'id' => 'item_description', 'placeholder' => 'Not Required | Optional']) !!}
+                                        </td>
+                                        <td>
+                                            {!! Form::text('units[]', $detail->units, ['class' => 'form-control', 'placeholder' => 'Add Number', 'id' => 'units', 'required']) !!}
+                                        </td>
+                                        <td>
+                                            {!! Form::text('rate[]', $detail->rate, ['class' => 'form-control', 'placeholder' => 'Add Rate', 'id' => 'rate', 'required']) !!}
+                                        </td>
+                                        <td>
+                                            {!! Form::text('amount[]', $detail->initial_amount, ['class' => 'form-control amount', 'id' => 'amount', 'placeholder' => 'Add Hrs and Rate']) !!}
+                                        </td>
+                                        <td class="text-center actions"><a id="delete-row" href="#"><i class="fa fa-times"></i></a></td>
+                                    </tr>
+                                    @endforeach
+                                    <tr id="1">
+                                        <td>
+                                            {!! Form::select('item_id[]', ['' => 'Select an item'] + $items, null, array('class' => 'form-control itemId', 'id' => 'itemId')) !!}
                                         </td>
                                         <td>
                                             {!! Form::text('item_description[]', null, ['class' => 'form-control item_description', 'id' => 'item_description', 'placeholder' => 'Not Required | Optional']) !!}
                                         </td>
                                         <td>
-                                            {!! Form::text('units[]', null, ['class' => 'form-control', 'placeholder' => 'Add Number', 'id' => 'units', 'required']) !!}
+                                            {!! Form::text('units[]', null, ['class' => 'form-control', 'placeholder' => 'Add Number', 'id' => 'units']) !!}
                                         </td>
                                         <td>
-                                            {!! Form::text('rate[]', null, ['class' => 'form-control', 'placeholder' => 'Add Rate', 'id' => 'rate', 'required']) !!}
+                                            {!! Form::text('rate[]', null, ['class' => 'form-control', 'placeholder' => 'Add Rate', 'id' => 'rate']) !!}
                                         </td>
                                         <td>
                                             {!! Form::text('amount[]', null, ['class' => 'form-control amount', 'id' => 'amount', 'placeholder' => 'Add Hrs and Rate']) !!}
                                         </td>
                                         <td class="text-center actions"><a id="delete-row" href="#"><i class="fa fa-times"></i></a></td>
                                     </tr>
-                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

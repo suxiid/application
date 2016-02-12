@@ -56,7 +56,10 @@
                                             <td>{{$job->promised_date}}</td>
                                             <td>{{$job->sname}}</td>
                                             <td>{{$job->status}}</td>
-                                            <td class="text-center actions"><a href="{{url('jobs/'.$job->job_id)}}" title="view"><i class="fa fa-newspaper-o"></i></a><a href="{{url('items/')}}"><i class="fa fa-pencil-square-o"></i></a><a href="#"><i class="fa fa-trash-o fa-fw"></i></a></td>
+                                            <td class="text-center actions">
+                                                <a href="{{url('jobs/'.$job->job_id)}}" title="view"><i class="fa fa-newspaper-o"></i></a>
+                                                <a href="{{url('items/')}}"><i class="fa fa-pencil-square-o"></i></a>
+                                            </td>
                                         </tr>
                                         <?php $i++; ?>
                                     @endforeach
@@ -102,7 +105,10 @@
                                             <td>{{$job->promised_date}}</td>
                                             <td>{{$job->sname}}</td>
                                             <td>{{$job->status}}</td>
-                                            <td class="text-center actions"><a href="{{url('jobs/'.$job->id)}}" title="view"><i class="fa fa-newspaper-o"></i></a><a href="{{url('items/')}}"><i class="fa fa-pencil-square-o"></i></a><a href="#"><i class="fa fa-trash-o fa-fw"></i></a></td>
+                                            <td class="text-center actions">
+                                                <a href="{{url('jobs/'.$job->id)}}" title="view"><i class="fa fa-newspaper-o"></i></a>
+                                                <a href="{{url('items/')}}"><i class="fa fa-pencil-square-o"></i></a>
+                                            </td>
                                         </tr>
                                         @endif
                                         <?php $i++; ?>
@@ -149,7 +155,10 @@
                                                 <td>{{$job->promised_date}}</td>
                                                 <td>{{$job->sname}}</td>
                                                 <td>{{$job->status}}</td>
-                                                <td class="text-center actions"><a href="{{url('jobs/'.$job->id)}}" title="view"><i class="fa fa-newspaper-o"></i></a><a href="{{url('items/')}}"><i class="fa fa-pencil-square-o"></i></a><a href="#"><i class="fa fa-trash-o fa-fw"></i></a></td>
+                                                <td class="text-center actions">
+                                                    <a href="{{url('jobs/'.$job->id)}}" title="view"><i class="fa fa-newspaper-o"></i></a>
+                                                    <a href="{{url('items/')}}"><i class="fa fa-pencil-square-o"></i></a>
+                                                </td>
                                             </tr>
                                         @endif
                                         <?php $i++ ?>

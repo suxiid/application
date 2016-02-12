@@ -36,7 +36,11 @@
                                     <td>{{$order->id}}</td>
                                     <td>{{$order->sname}}</td>
                                     <td>{{$order->created_at}}</td>
-                                    <td class="text-center actions"><a href="{{url('orders/'.$order->id)}}" title="View"><i class="fa fa-newspaper-o"></i></a><a href="{{url('orders/'.$order->id)}}" title="View" class="text-bold">GRN</a><a href="{{url('orders/'.$order->id.'/edit')}}" title="Edit"><i class="fa fa-pencil-square-o"></i></a><a href="#" title="Delete"><i class="fa fa-trash-o fa-fw"></i></a></td>
+                                    <td class="text-center actions">
+                                        <a href="{{url('orders/'.$order->id)}}" title="View"><i class="fa fa-newspaper-o"></i></a>
+                                        <a href="{{url('orders/'.$order->id)}}" title="View" class="text-bold">GRN</a>
+                                        <a href="{{url('orders/'.$order->id.'/edit')}}" title="Edit"><i class="fa fa-pencil-square-o"></i></a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

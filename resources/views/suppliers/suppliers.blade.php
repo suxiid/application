@@ -37,7 +37,10 @@
                                     <td>{{$supplier->name}}</td>
                                     <td>{{$supplier->address1}},&nbsp;{{$supplier->address2}},&nbsp;{{$supplier->city}}</td>
                                     <td>Tel. {{$supplier->telephone}} Mobile. {{$supplier->mobile}}</td>
-                                    <td class="text-center actions"><a href="{{url('suppliers/'.$supplier->id)}}" title="View"><i class="fa fa-male"></i></a><a href="{{url('suppliers/'.$supplier->id.'/edit')}}" title="Edit"><i class="fa fa-pencil-square-o"></i></a><a href="#" title="Delete"><i class="fa fa-trash-o fa-fw"></i></a></td>
+                                    <td class="text-center actions">
+                                        <a href="{{url('suppliers/'.$supplier->id)}}" title="View"><i class="fa fa-male"></i></a>
+                                        <a href="{{url('suppliers/'.$supplier->id.'/edit')}}" title="Edit"><i class="fa fa-pencil-square-o"></i></a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

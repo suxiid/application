@@ -251,9 +251,27 @@ class EstimatesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EstimateRequest $request, $id)
     {
-        //
+        $estimate = Estimate::findOrFail($id);
+        $estimate->update($request->all());
+
+        DB::table('estimate_details')->where('estimate_id', '=', $id)->delete();
+
+        $input = $request->all();
+
+        for($i=0;$i<count($input['item_id']);$i++)
+        {
+            $estimate_detail = new EstimateDetail();
+            $estimate_detail->item_id = $input['item_id'][$i];
+            $estimate_detail->item_description = $input['item_description'][$i];
+            $estimate_detail->units = $input['units'][$i];
+            $estimate_detail->rate = $input['rate'][$i];
+            $estimate_detail->initial_amount = $input['amount'][$i];
+
+            $estimate->estimate_details()->save($estimate_detail);
+        }
+        return redirect('estimates');
     }
 
     /**

@@ -36,6 +36,9 @@
 						<li>
                             <a href="{{url('/#')}}"><i class="fa fa-user fa-fw"></i> Users</a>
                         </li>
+                        <li>
+                            <a href="{{url('settings')}}"><i class="fa fa-wrench"></i> Settings</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

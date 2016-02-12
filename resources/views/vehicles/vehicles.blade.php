@@ -39,7 +39,9 @@
                                     <td>{{$vehicle->model}}</td>
                                     <td>{{$vehicle->year}}</td>
                                     <td>{{$vehicle->cname}}</td>
-                                    <td class="text-center actions"><a href="{{url('vehicles/'.$vehicle->vid.'/edit')}}"><i class="fa fa-pencil-square-o"></i></a><a href="#"><i class="fa fa-trash-o fa-fw"></i></a></td>
+                                    <td class="text-center actions">
+                                        <a href="{{url('vehicles/'.$vehicle->vid.'/edit')}}"><i class="fa fa-pencil-square-o"></i></a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
